@@ -304,6 +304,56 @@ html,body{font-family:'Inter',Arial,sans-serif}
 .islandInspectorName{line-height:1.15}
 @media(max-width:760px){.brand strong{font-size:15px}.topbar .brand{min-width:150px}.brandMark{display:none}.appearanceGrid{gap:10px}.appearanceGrid label{font-size:11px}.floatingInfo{top:auto;bottom:12px;left:36px;max-width:calc(100% - 175px);font-size:9px}.compassRose{display:none}.minimapWrap{width:108px;height:65px}.toolbar{scrollbar-width:none}.modalBack{padding:10px}#appearanceModal .modal{padding:16px}.modeSwitch{display:none}}
 
+/* Legible cartographic labels and a persistent helm. Atlas version remains 4. */
+.app{height:100dvh}
+#worldSvg .islandNameplate{cursor:pointer}
+#worldSvg .labelPaper{fill:#f4e6c6;fill-opacity:.92;stroke:#8c7654;stroke-opacity:.52;stroke-width:.65;vector-effect:non-scaling-stroke}
+#worldSvg .selectedNameplate .labelPaper{fill:#fff1cc;fill-opacity:1;stroke:#843e32;stroke-width:1.3}
+#worldSvg .islandLabel{stroke:none;fill:#382c21;font-family:Georgia,'Times New Roman',serif;letter-spacing:0}
+#worldSvg .islandLabel.priority-3{fill:#703b2d}
+#worldSvg .labelLeader{stroke:#f0e2c2;stroke-width:1;opacity:.8}
+#worldSvg .labelDot{fill:#e4c18a;stroke:#574635;stroke-width:.7}
+#worldSvg .shipHull{fill:#724731;stroke:#f7e1a7;stroke-width:1.5;vector-effect:none}
+#worldSvg .shipDeck{fill:#b28753;stroke:#442f23;stroke-width:1;vector-effect:none}
+#worldSvg .shipSail{fill:#f6e7c8;stroke:#573a2c;stroke-width:1.3;vector-effect:none}
+#worldSvg .shipMast{fill:none;stroke:#634332;stroke-width:2.2}
+#worldSvg .shipFlag{fill:#aa4b3e;stroke:#4c3026;stroke-width:.7}
+#worldSvg .shipShadow{fill:#153c48;opacity:.35;transform:translate(3px,3px)}
+#worldSvg .shipWake{fill:none;stroke:#f6edce;stroke-width:1.2;opacity:0;transition:opacity .3s}
+#worldSvg .shipGroup.sailing .shipWake{opacity:.6}
+#worldSvg .shipGroup{cursor:grab;outline:none}
+#worldSvg .shipGroup.selected .shipHull,#worldSvg .shipGroup:focus .shipHull{stroke:#ffda7d;stroke-width:2.5}
+#worldSvg .shipName{fill:#fff0cd;stroke:#34515a;stroke-width:3px;paint-order:stroke fill;font-family:Georgia,serif;font-weight:600;pointer-events:none}
+#worldSvg .voyageHalo,#worldSvg .voyageTrail,#worldSvg .sailingPlan{fill:none;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke;pointer-events:none}
+#worldSvg .voyageHalo{stroke:#49382d;stroke-width:4;opacity:.48}
+#worldSvg .voyageTrail{stroke:#f0c879;stroke-width:2;stroke-dasharray:2 6}
+#worldSvg .voyageOrigin,#worldSvg .voyageStop{fill:#f4dfab;stroke:#775236;stroke-width:1.1;vector-effect:non-scaling-stroke}
+#worldSvg .voyageStop{fill:#8d4838;stroke:#f4dfab}
+#worldSvg .sailingPlan{stroke:#e4eeea;stroke-width:1.5;stroke-dasharray:7 7;opacity:.8}
+#worldSvg .sailingWaypoint{fill:#345965;stroke:#f6e6bc;stroke-width:1;vector-effect:non-scaling-stroke;pointer-events:none}
+#worldSvg .waypointNumber{fill:#fff1d2;text-anchor:middle;dominant-baseline:central;font-family:Arial,sans-serif;pointer-events:none}
+.sailingDock{position:absolute;z-index:11;left:50%;bottom:14px;transform:translateX(-50%);display:flex;align-items:center;gap:6px;padding:6px;max-width:calc(100% - 330px);width:430px;border:1px solid #ad956b;border-radius:7px;background:linear-gradient(135deg,#f2e5c9f5,#d9c49cf5);box-shadow:0 5px 22px #1d2a2b66}
+.sailingDock button{flex-shrink:0;min-width:34px;height:34px;border:1px solid #a28c66;background:#f3e7cc;color:#51412e;border-radius:4px;font:700 13px Georgia,serif}
+.sailingDock button:disabled{opacity:.38;cursor:default}
+.sailingDock #sailMode{font:700 11px Arial,sans-serif;padding:0 10px}
+.sailingDock #sailMode.active,.sailingDock #sailQueue.active{background:#805044;border-color:#805044;color:#fff0d4}
+.sailingDock #sailingDetails{flex:1;min-width:0;text-align:left;padding:0 5px;background:transparent;border-color:transparent}
+.sailingDock strong,.sailingDock small{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sailingDock strong{font:700 12px Georgia,serif;margin-bottom:3px}
+.sailingDock small{font:10px Arial,sans-serif;color:#7b664b}
+.sailingDock.isSailing small{color:#4a6b51}
+.drawHint{bottom:75px;max-width:calc(100% - 100px);text-align:center;width:max-content;border-width:1px;border-radius:4px;font-weight:500;line-height:1.45;pointer-events:none}
+.voyageOptions{display:grid;gap:10px;margin:16px 0;padding:13px 0;border-block:1px solid #b9a27c}
+.voyageOptions label{font:12px/1.3 Arial,sans-serif;display:flex;gap:7px;align-items:center}
+.voyageOptions input{accent-color:#815044}
+.voyageJournal{margin-top:20px}.voyageJournal h3{font:700 11px Arial,sans-serif;text-transform:uppercase;letter-spacing:.08em;color:#76533c}
+.voyageEntry{display:flex;align-items:center;gap:5px;padding:10px 0;border-bottom:1px solid #bca47b}
+.voyageEntry div{flex:1;min-width:0}.voyageEntry b{font:600 13px Georgia,serif;display:block}.voyageEntry small{display:block;font:10px/1.5 Arial,sans-serif;color:#766045;margin-top:4px}
+.voyageEntry button{width:27px;height:29px;flex-shrink:0;border:1px solid #ab946d;background:#f0e1bf;border-radius:3px;color:#714b39}
+@media(max-width:1050px){.sailingDock{max-width:calc(100% - 220px);left:45%}.chartCartouche{top:48px}}
+@media(max-width:760px){.sailingDock{left:38px;right:38px;bottom:108px;transform:none;width:auto;max-width:none}.sailingDock #sailMode{padding:0 7px}.sailingDock button{min-width:30px}.sailingDock #sailMode{font-size:10px}.sailingDock strong{font-size:11px}.sailingDock small{font-size:9px}.drawHint{bottom:166px;max-width:calc(100% - 76px);font-size:10px}.chartCartouche{top:16px;left:43%;font-size:7px}.chartCartouche strong{font-size:19px}.floatingInfo{max-width:calc(100% - 180px)}.compassRose{display:none}}
+@media(prefers-reduced-motion:reduce){#worldSvg .shipWake{transition:none}}
+
 </style>
 </head>
 <body>
@@ -317,6 +367,7 @@ html,body{font-family:'Inter',Arial,sans-serif}
       <button class="toolBtn" data-tool="move">✥ Mover objeto</button>
       <button class="toolBtn" data-tool="reshape">◈ Editar forma</button>
       <button class="toolBtn" data-tool="route">〰 Rota</button>
+      <button class="toolBtn" data-tool="sail">⚓ Navegar</button>
       <span class="divider"></span>
       <button class="toolBtn secondary" id="gridBtn"># Grade</button>
       <button class="toolBtn secondary active" id="labelsBtn">Aa Nomes</button>
@@ -354,7 +405,7 @@ html,body{font-family:'Inter',Arial,sans-serif}
             <label class="layerRow">Névoa do jogador <input id="layerFog" type="checkbox"></label>
           </div></div>
           <button class="fullBtn" id="showReference">Comparar com a imagem original</button><div class="section" style="margin-top:8px"><h3>Referência temporária</h3><div class="sectionBody help">Você pode carregar uma imagem só para <b>traçar por cima</b>. Ela não faz parte do mapa final nem é salva no backup.<label class="fullBtn" style="display:block;text-align:center;margin-top:7px">Carregar imagem<input type="file" id="referenceFile" class="fileInput" accept="image/*"></label><div class="formMini" style="margin-top:7px"><label>Opacidade</label><input id="referenceOpacity" type="range" min="0" max="100" value="32"></div><button class="fullBtn danger" id="removeReference">Remover referência</button></div></div>
-          <div class="section"><h3>Atalhos</h3><div class="sectionBody help"><kbd>V</kbd> selecionar • <kbd>H</kbd> mover mapa • <kbd>I</kbd> desenhar ilha • <kbd>M</kbd> mover objeto • <kbd>E</kbd> editar forma • <kbd>R</kbd> rota • <kbd>Delete</kbd> apagar • <kbd>Esc</kbd> cancelar • <kbd>Ctrl+Z</kbd> desfazer.</div></div>
+          <div class="section"><h3>Atalhos</h3><div class="sectionBody help"><kbd>V</kbd> selecionar • <kbd>H</kbd> mover mapa • <kbd>I</kbd> desenhar ilha • <kbd>M</kbd> mover objeto • <kbd>E</kbd> editar forma • <kbd>R</kbd> rota • <kbd>N</kbd> navegar • <kbd>Delete</kbd> apagar • <kbd>Esc</kbd> cancelar • <kbd>Ctrl+Z</kbd> desfazer.</div></div>
         </div>
         <div class="tabPane hidden" data-pane="files">
           <div class="section"><h3>Projeto</h3><div class="sectionBody"><button class="fullBtn" id="exportJson">Exportar backup JSON</button><label class="fullBtn" style="display:block;text-align:center">Importar backup<input type="file" id="importJson" class="fileInput" accept="application/json,.json"></label><button class="fullBtn" id="exportSvg">Exportar mapa SVG</button><button class="fullBtn" id="exportPng">Exportar PNG</button></div></div>
@@ -424,6 +475,7 @@ html,body{font-family:'Inter',Arial,sans-serif}
         <g id="baseLayer"></g>
         <g id="baseLabelLayer"></g>
         <g id="gridLayer"></g>
+        <g id="voyageLayer"></g>
         <g id="routeLayer"></g>
         <g id="islandLayer"></g>
         <g id="shipLayer"></g>
@@ -435,6 +487,13 @@ html,body{font-family:'Inter',Arial,sans-serif}
       <div class="compassRose"><b class="n">N</b><b class="s">S</b><b class="w">O</b><b class="e">L</b><i></i></div>
       <div class="floatingInfo" id="floatingInfo">Ferramenta: <strong>Selecionar</strong></div>
       <div class="minimapWrap"><svg id="miniSvg" viewBox="0 0 5600 3000"></svg></div>
+      <div class="sailingDock" id="sailingDock" role="group" aria-label="Navegação do navio">
+        <button id="sailMode" title="Escolher destino (N)">⚓ Navegar</button>
+        <button id="sailingDetails" title="Abrir diário de bordo"><strong id="sailingName">Navio da Tripulação</strong><small id="sailingStatus">Pronto para zarpar</small></button>
+        <button id="sailQueue" title="Acrescentar paradas aos próximos cliques" aria-label="Acrescentar paradas" aria-pressed="false">＋</button>
+        <button id="sailPause" title="Retomar navegação" aria-label="Retomar navegação" disabled>▶</button>
+        <button id="sailFinish" title="Encerrar viagem e guardar trajeto" aria-label="Encerrar viagem" disabled>⚑</button>
+      </div>
       <div class="zoomRead" id="zoomRead">100%</div>
       <div class="mapControls"><button id="zoomIn">＋</button><button id="zoomOut">−</button><button class="wide" id="fitBtn">Enquadrar</button></div>
       <div class="drawHint" id="drawHint"></div>
@@ -491,7 +550,7 @@ html,body{font-family:'Inter',Arial,sans-serif}
     <label class="wide">Textura <span class="settingRange"><input id="aTexture" type="range" min="0" max="100" step="5"><output id="aTextureValue"></output></span></label>
   </div></div>
   <div class="appearanceSection"><h3>Nomes e organização</h3><div class="appearanceGrid">
-    <label class="wide">Tamanho dos nomes <span class="settingRange"><input id="aLabels" type="range" min="70" max="150" step="5"><output id="aLabelsValue"></output></span></label>
+    <label class="wide">Tamanho dos nomes <span class="settingRange"><input id="aLabels" type="range" min="70" max="180" step="5"><output id="aLabelsValue"></output></span></label>
     <label class="wide">Exibir nomes <select id="aDensity"><option value="balanced">Automático, conforme o espaço</option><option value="all">Todos, com mais deslocamento</option><option value="main">Somente os principais</option></select></label>
     <label class="wide">Linhas até as ilhas <input id="aLeaders" type="checkbox"></label>
     <label class="wide">Evitar ilhas sobrepostas <input id="aCollisions" type="checkbox"></label>
@@ -506,7 +565,7 @@ html,body{font-family:'Inter',Arial,sans-serif}
 const NS='http://www.w3.org/2000/svg', WORLD={w:5600,h:3000}, REF={x:0,y:40,sx:2.734375,sy:2.1677802524}, KEY='op_new_frontier_vector_atlas_v4';
 const statusMeta={visited:{label:'Visitada',color:'#5d8962'},known:{label:'Conhecida',color:'#56769a'},target:{label:'Destino',color:'#d8a449'},danger:{label:'Perigo',color:'#9d3d35'},unknown:{label:'Desconhecida',color:'#7e7164'}};
 const terrainMeta={generic:'Genérico',tropical:'Tropical',forest:'Floresta',desert:'Deserto',snow:'Neve',volcanic:'Vulcânico',rocky:'Rochoso',kingdom:'Reino',swamp:'Pântano',sky:'Céu'};
-const toolNames={select:'Selecionar',pan:'Mover mapa',draw:'Desenhar ilha',move:'Mover objeto',reshape:'Editar forma',route:'Traçar rota'};
+const toolNames={select:'Selecionar',pan:'Mover mapa',draw:'Desenhar ilha',move:'Mover objeto',reshape:'Editar forma',route:'Traçar rota',sail:'Navegar com o navio'};
 const BASE_TRACE_PATHS=[];
 const BASE_GRAND_ISLETS=[];
 const BASE_LABELS=[{"name":"North Blue","x":1129.296875,"y":484.39495174461763,"kind":"sea"},{"name":"East Blue","x":3882.8125,"y":1191.0913140311802,"kind":"sea"},{"name":"West Blue","x":905.078125,"y":2619.6585003711953,"kind":"sea"},{"name":"South Blue","x":4448.828125,"y":2216.45137342242,"kind":"sea"},{"name":"Red Line","x":2354.296875,"y":668.656273199703,"kind":"red"},{"name":"Red Line","x":5364.84375,"y":1136.896807720861,"kind":"red"},{"name":"Red Line","x":177.734375,"y":2207.7802524127687,"kind":"red"},{"name":"Calm Belt","x":1564.0625,"y":1531.432813659985,"kind":"belt"},{"name":"New World","x":1285.15625,"y":1906.458797327394,"kind":"belt"},{"name":"Paradise","x":3308.59375,"y":1531.432813659985,"kind":"belt"},{"name":"Calm Belt","x":3032.421875,"y":1908.6265775798067,"kind":"belt"}];
@@ -530,96 +589,17 @@ function esc(s=''){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt
 function clamp(v,a,b){return Math.max(a,Math.min(b,v))}
 function el(name,attrs={},text=null){const n=document.createElementNS(NS,name);for(const[k,v]of Object.entries(attrs))if(v!==null&&v!==undefined)n.setAttribute(k,v);if(text!==null)n.textContent=text;return n}
 function toast(msg){const t=$('toast');t.textContent=msg;t.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove('show'),1700)}
-function snapshot(){return JSON.stringify({islands:state.islands,routes:state.routes,ship:state.ship,layers:state.layers,viewMode:state.viewMode})}
 function pushHistory(){if(historyMute)return;history.push(snapshot());if(history.length>70)history.shift();future=[];updateHistoryButtons()}
-function restoreSnapshot(raw){historyMute=true;const d=JSON.parse(raw);Object.assign(state,d);historyMute=false;save(false);syncControls();renderAll()}
-function undo(){if(!history.length)return;future.push(snapshot());restoreSnapshot(history.pop());toast('Ação desfeita.');updateHistoryButtons()}
-function redo(){if(!future.length)return;history.push(snapshot());restoreSnapshot(future.pop());toast('Ação refeita.');updateHistoryButtons()}
+function undo(){if(!history.length)return;pauseSailing(false);future.push(snapshot());restoreSnapshot(history.pop());toast('Ação desfeita.');updateHistoryButtons()}
+function redo(){if(!future.length)return;pauseSailing(false);history.push(snapshot());restoreSnapshot(future.pop());toast('Ação refeita.');updateHistoryButtons()}
 function updateHistoryButtons(){$('undoBtn').disabled=!history.length;$('redoBtn').disabled=!future.length}
-function atlasDefaults(){return clone(ATLAS_ISLANDS)}
-function mergeAtlasIslands(existing=[]){
-  const out=Array.isArray(existing)?existing.map(i=>({...i})):[],ids=new Set(out.map(i=>i.id));
-  for(const a of ATLAS_ISLANDS)if(!ids.has(a.id))out.push(clone(a));
-  return out;
-}
-function save(doRender=false){try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}if(doRender)renderAll()}
-function load(){
-  let loaded=null;
-  try{
-    const raw=localStorage.getItem(KEY);
-    if(raw)loaded=JSON.parse(raw);
-    else{
-      const old=localStorage.getItem(OLD_KEY);
-      if(old)loaded=normalizeImported(JSON.parse(old));
-    }
-  }catch(e){}
-  if(loaded)state={...state,...loaded,layers:{...state.layers,...(loaded.layers||{})},ship:{...state.ship,...(loaded.ship||{})}};
-  state.version=4;state.islands=mergeAtlasIslands(state.islands);
-  syncControls();buildBase();buildGrid();fitView();renderAll();updateHistoryButtons()
-}
+function atlasDefaults(){return mergeAtlasIslands([])}
 function syncControls(){document.body.classList.toggle('playerMode',state.viewMode==='player');$('masterMode').classList.toggle('active',state.viewMode==='master');$('playerMode').classList.toggle('active',state.viewMode==='player');$('layerBase').checked=state.layers.base;$('layerGrid').checked=state.layers.grid;$('layerIslands').checked=state.layers.islands;$('layerRoutes').checked=state.layers.routes;$('layerShip').checked=state.layers.ship;$('layerLabels').checked=state.layers.labels;$('layerFog').checked=state.layers.fog;$('gridBtn').classList.toggle('active',state.layers.grid);$('labelsBtn').classList.toggle('active',state.layers.labels);$('fogBtn').classList.toggle('active',state.layers.fog)}
 function isVisible(obj){return state.viewMode==='master'||obj.visibility!=='master'}
 function worldPointFromEvent(ev){const p=svg.createSVGPoint();p.x=ev.clientX;p.y=ev.clientY;const m=svg.getScreenCTM();if(!m)return{x:0,y:0};const r=p.matrixTransform(m.inverse());return{x:clamp(r.x,0,WORLD.w),y:clamp(r.y,0,WORLD.h)}}
-function setCamera(){
-  svg.setAttribute('viewBox',`${camera.x} ${camera.y} ${camera.w} ${camera.h}`);
-  const zoom=WORLD.w/camera.w,z=Math.round(zoom*100);$('zoomRead').textContent=z+'%';
-  pane.classList.toggle('zoom-far',zoom<1.35);pane.classList.toggle('zoom-mid',zoom>=1.35&&zoom<2.35);pane.classList.toggle('zoom-near',zoom>=2.35);
-  renderMini()
-}
 function fitView(){const box=$('mapPane').getBoundingClientRect();const ar=box.width/Math.max(1,box.height),war=WORLD.w/WORLD.h;if(ar>war){camera.h=WORLD.h;camera.w=WORLD.h*ar;camera.x=(WORLD.w-camera.w)/2;camera.y=0}else{camera.w=WORLD.w;camera.h=WORLD.w/ar;camera.x=0;camera.y=(WORLD.h-camera.h)/2}setCamera()}
 function zoomAt(ev,factor){const p=worldPointFromEvent(ev),nw=clamp(camera.w*factor,220,WORLD.w*2),nh=nw*(camera.h/camera.w);const rx=(p.x-camera.x)/camera.w,ry=(p.y-camera.y)/camera.h;camera.x=p.x-rx*nw;camera.y=p.y-ry*nh;camera.w=nw;camera.h=nh;setCamera()}
 function centerOn(x,y,zoom=1.7){const box=$('mapPane').getBoundingClientRect(),ar=box.width/Math.max(1,box.height);camera.w=WORLD.w/zoom;camera.h=camera.w/ar;camera.x=x-camera.w/2;camera.y=y-camera.h/2;setCamera()}
-function buildBase(){const g=$('baseLayer'),labels=$('baseLabelLayer');g.innerHTML='';labels.innerHTML='';
-  const y1=REF.y+669*REF.sy,y2=REF.y+700*REF.sy,y3=REF.y+847*REF.sy,y4=REF.y+876*REF.sy;
-  g.append(
-    el('rect',{x:0,y:y2,width:WORLD.w,height:y3-y2,class:'grandline'}),
-    el('rect',{x:0,y:y1,width:WORLD.w,height:y2-y1,class:'belt'}),
-    el('rect',{x:0,y:y3,width:WORLD.w,height:y4-y3,class:'belt'})
-  );
-  const currents=[
-    `M220 510 C1100 310 1860 420 2550 590 S4180 640 5410 370`,
-    `M180 1180 C1040 980 1790 1110 2510 1260 S4140 1320 5480 1090`,
-    `M160 2350 C980 2160 1760 2250 2570 2440 S4220 2510 5470 2260`
-  ];
-  currents.forEach(d=>g.appendChild(el('path',{d,class:'ocean-current'})));
-  BASE_TRACE_PATHS.forEach((d,idx)=>{
-    if(ATLAS_PATH_INDEXES.has(idx))return;
-    g.appendChild(el('path',{d,class:'base-shelf'}));
-    g.appendChild(el('path',{d,class:'base-land'}));
-    g.appendChild(el('path',{d,class:'base-land-detail'}));
-  });
-  // Red Line: pintura própria, mas recortada apenas sobre as massas terrestres correspondentes.
-  const defsLocal=el('defs');
-  [0,1].forEach(idx=>{const cp=el('clipPath',{id:'redLineClip'+idx});cp.appendChild(el('path',{d:BASE_TRACE_PATHS[idx]}));defsLocal.appendChild(cp)});
-  g.appendChild(defsLocal);
-  const redMain=`M 2380 -180 C 2170 240 2400 620 2290 980 C 2180 1320 2410 1590 2315 1910 C 2210 2260 2460 2570 2350 3180`;
-  const redEdge=`M 5525 -160 C 5400 350 5540 770 5450 1210 C 5380 1600 5570 2030 5485 2440 C 5420 2720 5530 2920 5570 3160`;
-  g.appendChild(el('path',{d:redMain,class:'redLineOverlay','stroke-width':760,'clip-path':'url(#redLineClip0)'}));
-  g.appendChild(el('path',{d:redMain,class:'redLineRidge','clip-path':'url(#redLineClip0)'}));
-  g.appendChild(el('path',{d:redEdge,class:'redLineOverlay','stroke-width':520,'clip-path':'url(#redLineClip1)'}));
-  g.appendChild(el('path',{d:redEdge,class:'redLineRidge','clip-path':'url(#redLineClip1)'}));
-  BASE_GRAND_ISLETS.forEach((o,idx)=>{
-    if(ATLAS_ISLET_INDEXES.has(idx))return;
-    const d=blobPath(o.x,o.y,o.r,9,o.seed);
-    g.appendChild(el('path',{d,class:'base-islet'}));
-  });
-  const clusters=[
-    [920,120,10,36],[920,300,12,34],[900,510,10,32],[970,650,12,34],
-    [840,960,12,30],[860,1120,14,28],[875,1260,12,28],
-    [360,1080,8,26],[520,1230,8,25],[1570,1080,9,25],[1860,1110,7,24],
-    [1990,370,8,24],[1740,255,8,22],[1450,118,6,22]
-  ];
-  clusters.forEach(([sx0,sy0,count,spread])=>{
-    for(let k=0;k<count;k++){const px=REF.x+(sx0+Math.sin(k*1.9)*spread+k*4)*REF.sx,py=REF.y+(sy0+(k%4)*18+Math.cos(k*.8)*7)*REF.sy;
-      g.appendChild(el('path',{d:`M${px-18} ${py+12} L${px} ${py-18} L${px+18} ${py+12} L${px+5} ${py+3} L${px} ${py+12} L${px-5} ${py+3}Z`,class:'relief'}));
-    }
-  });
-  BASE_LABELS.filter(o=>['sea','red','belt'].includes(o.kind)).forEach(o=>{
-    const cls=o.kind==='sea'?'world-label':o.kind==='red'?'world-label red':'world-label belt';
-    labels.appendChild(el('text',{x:o.x,y:o.y,class:cls},o.name));
-  });
-  applyLayerVisibility();
-}
 function buildGrid(){const g=$('gridLayer');g.innerHTML='';for(let x=0;x<=WORLD.w;x+=280)g.appendChild(el('line',{x1:x,y1:0,x2:x,y2:WORLD.h,class:(x%840===0?'gridLine gridMajor':'gridLine')}));for(let y=0;y<=WORLD.h;y+=200)g.appendChild(el('line',{x1:0,y1:y,x2:WORLD.w,y2:y,class:(y%600===0?'gridLine gridMajor':'gridLine')}));}
 function blobPath(cx,cy,r,n=10,seed=1){const pts=[];let s=seed%2147483647;const rnd=()=>{s=s*16807%2147483647;return(s-1)/2147483646};for(let i=0;i<n;i++){const a=i/n*Math.PI*2,rr=r*(.72+rnd()*.45);pts.push({x:cx+Math.cos(a)*rr,y:cy+Math.sin(a)*rr})}return smoothClosedPath(pts)}
 function smoothClosedPath(pts,t=.72){if(pts.length<3)return'';let d=`M ${pts[0].x.toFixed(2)} ${pts[0].y.toFixed(2)}`;const n=pts.length;for(let i=0;i<n;i++){const p0=pts[(i-1+n)%n],p1=pts[i],p2=pts[(i+1)%n],p3=pts[(i+2)%n];const c1={x:p1.x+(p2.x-p0.x)/6*t,y:p1.y+(p2.y-p0.y)/6*t},c2={x:p2.x-(p3.x-p1.x)/6*t,y:p2.y-(p3.y-p1.y)/6*t};d+=` C ${c1.x.toFixed(2)} ${c1.y.toFixed(2)} ${c2.x.toFixed(2)} ${c2.y.toFixed(2)} ${p2.x.toFixed(2)} ${p2.y.toFixed(2)}`}return d+' Z'}
@@ -629,63 +609,17 @@ function simplifyClosed(points,eps=5){if(points.length<7)return points;const ste
   let out=[];for(let i=0;i<sampled.length;i++){const prev=sampled[(i-1+sampled.length)%sampled.length],p=sampled[i],next=sampled[(i+1)%sampled.length];if(pointLineDist(p,prev,next)>eps*.35||i%2===0)out.push(p)}return out.length>=5?out:sampled}
 function bboxOf(points){let minX=Infinity,minY=Infinity,maxX=-Infinity,maxY=-Infinity;for(const p of points){minX=Math.min(minX,p.x);minY=Math.min(minY,p.y);maxX=Math.max(maxX,p.x);maxY=Math.max(maxY,p.y)}return{minX,minY,maxX,maxY,w:maxX-minX,h:maxY-minY,cx:(minX+maxX)/2,cy:(minY+maxY)/2}}
 function centerOfIsland(i){const b=bboxOf(i.points);return{x:b.cx,y:b.cy}}
-function renderAll(){renderRoutes();renderIslands();renderShip();renderEdit();renderFog();renderLists();renderInspector();renderStats();applyLayerVisibility();renderMini();save(false)}
 function applyLayerVisibility(){$('baseLayer').style.display=state.layers.base?'':'none';$('baseLabelLayer').style.display=(state.layers.base&&state.layers.labels)?'':'none';$('gridLayer').style.display=state.layers.grid?'':'none';$('islandLayer').style.display=state.layers.islands?'':'none';$('routeLayer').style.display=state.layers.routes?'':'none';$('shipLayer').style.display=state.layers.ship?'':'none';$('fogLayer').style.display=(state.layers.fog&&state.viewMode==='player')?'':'none'}
-function labelDefaultDy(i,b){return -(Math.max(18,b.h*.55)+18)}
 function boxesOverlap(a,b,pad=5){return !(a.x2+pad<b.x1||a.x1-pad>b.x2||a.y2+pad<b.y1||a.y1-pad>b.y2)}
-function renderIslands(){const g=$('islandLayer');g.innerHTML='';const labelQueue=[];
-  for(const i of state.islands){
-    if(!isVisible(i))continue;const d=smoothClosedPath(i.points,Number(i.smooth??.72)),sourceClass=i.source==='atlas'?' atlasIsland':' userIsland';
-    g.appendChild(el('path',{d,class:'islandCoastShelf'+(i.visibility==='master'?' masterOnlySvg':'')}));
-    const path=el('path',{d,fill:`url(#terrain-${i.terrain||'generic'})`,class:'islandPath'+sourceClass+(selected?.type==='island'&&selected.id===i.id?' selected':'')+(i.visibility==='master'?' masterOnlySvg':''),'data-id':i.id});
-    path.appendChild(el('title',{},`${i.name} — ${i.sea}`));
-    path.addEventListener('pointerdown',ev=>islandPointerDown(ev,i));
-    path.addEventListener('click',ev=>{ev.stopPropagation();if(tool==='route')routeIslandClick(i.id);else selectObject('island',i.id)});
-    path.addEventListener('dblclick',ev=>{ev.stopPropagation();if(tool==='reshape')addPointToIsland(i,worldPointFromEvent(ev));else openIslandModal(i.id)});
-    path.addEventListener('contextmenu',ev=>{ev.preventDefault();ev.stopPropagation();if(state.viewMode==='master'){selectObject('island',i.id);openIslandModal(i.id)}});
-    g.appendChild(path);g.appendChild(el('path',{d,class:'islandInnerLine'+(i.visibility==='master'?' masterOnlySvg':'')}));
-    if(state.layers.labels){const c=centerOfIsland(i),b=bboxOf(i.points),size=clamp(Number(i.labelSize)||14,10,32),priority=clamp(Number(i.labelPriority)||2,1,3);
-      labelQueue.push({i,c,b,size,priority,desired:{x:c.x+Number(i.labelDx||0),y:c.y+(Number.isFinite(Number(i.labelDy))?Number(i.labelDy):labelDefaultDy(i,b))}});
-    }
-  }
-  labelQueue.sort((a,b)=>b.priority-a.priority||b.size-a.size);
-  const placed=[];
-  for(const L of labelQueue){const {i,c,b,size,priority,desired}=L,w=Math.max(28,i.name.length*size*.54),h=size*1.2,gap=Math.max(13,Math.max(b.w,b.h)*.10);
-    const candidates=[
-      desired,
-      {x:c.x,y:b.minY-gap},{x:c.x,y:b.maxY+gap+size*.35},
-      {x:b.maxX+gap+w*.5,y:c.y},{x:b.minX-gap-w*.5,y:c.y},
-      {x:b.maxX+gap+w*.35,y:b.minY-gap},{x:b.minX-gap-w*.35,y:b.minY-gap},
-      {x:b.maxX+gap+w*.35,y:b.maxY+gap},{x:b.minX-gap-w*.35,y:b.maxY+gap}
-    ];
-    let pick=candidates[0],box=null;
-    for(const q of candidates){const bb={x1:q.x-w/2,x2:q.x+w/2,y1:q.y-h/2,y2:q.y+h/2};if(!placed.some(p=>boxesOverlap(bb,p,7))){pick=q;box=bb;break}}
-    if(!box)box={x1:pick.x-w/2,x2:pick.x+w/2,y1:pick.y-h/2,y2:pick.y+h/2};placed.push(box);
-    const dist=Math.hypot(pick.x-c.x,pick.y-c.y),prio=' priority-'+priority,master=i.visibility==='master'?' masterOnlySvg':'';
-    if(dist>Math.max(b.w,b.h)*.62+16){g.appendChild(el('path',{d:`M ${c.x} ${c.y} L ${pick.x} ${pick.y}`,class:'labelLeader'+prio+master}));g.appendChild(el('circle',{cx:c.x,cy:c.y,r:2.5,class:'labelDot'+prio+master}))}
-    const t=el('text',{x:pick.x,y:pick.y,'font-size':size,class:'islandLabel'+prio+master,'data-id':i.id},i.name);
-    t.addEventListener('pointerdown',ev=>labelPointerDown(ev,i));t.addEventListener('click',ev=>{ev.stopPropagation();selectObject('island',i.id)});t.addEventListener('dblclick',ev=>{ev.stopPropagation();openIslandModal(i.id)});
-    g.appendChild(t);
-  }
-}
 function routeFullPoints(r){const a=state.islands.find(i=>i.id===r.a),b=state.islands.find(i=>i.id===r.b);if(!a||!b)return[];return[centerOfIsland(a),...(r.points||[]),centerOfIsland(b)]}
 function routePath(points){if(points.length<2)return'';if(points.length===2){const[a,b]=points,dx=b.x-a.x,dy=b.y-a.y,d=Math.hypot(dx,dy)||1,nx=-dy/d,ny=dx/d,bend=Math.min(85,d*.1),mx=(a.x+b.x)/2+nx*bend,my=(a.y+b.y)/2+ny*bend;return`M ${a.x} ${a.y} Q ${mx} ${my} ${b.x} ${b.y}`}
   let d=`M ${points[0].x} ${points[0].y}`;for(let i=1;i<points.length-1;i++){const p=points[i],n=points[i+1],mx=(p.x+n.x)/2,my=(p.y+n.y)/2;d+=` Q ${p.x} ${p.y} ${mx} ${my}`}const last=points[points.length-1],prev=points[points.length-2];d+=` Q ${prev.x} ${prev.y} ${last.x} ${last.y}`;return d}
 function renderRoutes(){const g=$('routeLayer');g.innerHTML='';for(const r of state.routes){if(!isVisible(r))continue;const pts=routeFullPoints(r);if(pts.length<2)continue;const p=el('path',{d:routePath(pts),class:`route ${r.type}${selected?.type==='route'&&selected.id===r.id?' selected':''}${r.visibility==='master'?' masterOnlySvg':''}`,'data-id':r.id});if(r.type==='planned')p.setAttribute('marker-end','url(#arrowPlan)');if(r.type==='dangerous')p.setAttribute('marker-end','url(#arrowDanger)');p.addEventListener('click',ev=>{ev.stopPropagation();selectObject('route',r.id)});p.addEventListener('dblclick',ev=>{ev.stopPropagation();openRouteModal(r.id)});g.appendChild(p);if(state.layers.labels&&r.label){const mid=pts[Math.floor(pts.length/2)],t=el('text',{x:mid.x,y:mid.y-12,class:'routeLabel'+(r.visibility==='master'?' masterOnlySvg':'')},r.label);g.appendChild(t)}}}
-function renderShip(){const g=$('shipLayer');g.innerHTML='';if(!state.ship.visible||!isVisible(state.ship))return;const sh=state.ship,grp=el('g',{transform:`translate(${sh.x} ${sh.y}) rotate(${sh.heading||0})`,class:'shipGroup'+(selected?.type==='ship'?' selected':'')+(sh.visibility==='master'?' masterOnlySvg':'')});grp.append(el('path',{d:'M-23 10 Q0 26 23 10 L16 20 Q0 30 -16 20Z',class:'shipHull'}),el('line',{x1:0,y1:12,x2:0,y2:-28,stroke:'#2d2117','stroke-width':3,'vector-effect':'non-scaling-stroke'}),el('path',{d:'M2 -26 L2 5 L22 0 Z',class:'shipSail'}),el('path',{d:'M-2 -22 L-2 1 L-16 -4 Z',fill:'#f4e0b5',stroke:'#2d2117','stroke-width':2,'vector-effect':'non-scaling-stroke'}));grp.addEventListener('click',ev=>{ev.stopPropagation();selectObject('ship','ship')});grp.addEventListener('pointerdown',shipPointerDown);g.appendChild(grp);if(state.layers.labels)g.appendChild(el('text',{x:sh.x,y:sh.y-38,class:'routeLabel'},sh.name))}
 function renderEdit(){const g=$('editLayer');g.innerHTML='';if(tool!=='reshape'||!selected)return;if(selected.type==='island'){const i=state.islands.find(x=>x.id===selected.id);if(!i||!isVisible(i))return;i.points.forEach((p,idx)=>{const h=el('circle',{cx:p.x,cy:p.y,r:6,class:'handle','data-idx':idx});h.addEventListener('pointerdown',ev=>handleIslandDown(ev,i,idx));h.addEventListener('contextmenu',ev=>{ev.preventDefault();ev.stopPropagation();if(i.points.length<=5)return toast('A ilha precisa de pelo menos 5 pontos.');pushHistory();i.points.splice(idx,1);renderAll()});g.appendChild(h)})}else if(selected.type==='route'){const r=state.routes.find(x=>x.id===selected.id);if(!r)return;(r.points||[]).forEach((p,idx)=>{const h=el('circle',{cx:p.x,cy:p.y,r:6,class:'handle routeHandle','data-idx':idx});h.addEventListener('pointerdown',ev=>handleRouteDown(ev,r,idx));h.addEventListener('contextmenu',ev=>{ev.preventDefault();ev.stopPropagation();pushHistory();r.points.splice(idx,1);renderAll()});g.appendChild(h)})}}
 function renderDraft(){const g=$('draftLayer');g.innerHTML='';if(drawing?.points?.length>2)g.appendChild(el('path',{d:smoothClosedPath(drawing.points,.55),class:'drawPreview'}));if(routeDraft){const a=state.islands.find(i=>i.id===routeDraft.a);if(a){const pts=[centerOfIsland(a),...routeDraft.points];if(routeCursor)pts.push(routeCursor);if(pts.length>1)g.appendChild(el('path',{d:routePath(pts),class:'route planned',opacity:.75}))}}}
 function renderFog(){const g=$('fogLayer');g.innerHTML='';if(!(state.layers.fog&&state.viewMode==='player'))return;let defs=el('defs'),mask=el('mask',{id:'playerFogMask'});mask.appendChild(el('rect',{x:0,y:0,width:WORLD.w,height:WORLD.h,fill:'white'}));for(const i of state.islands.filter(x=>isVisible(x))){const b=bboxOf(i.points),r=Math.max(85,Math.max(b.w,b.h)*1.4);mask.appendChild(el('circle',{cx:b.cx,cy:b.cy,r,fill:'black'}))}if(state.ship.visible&&isVisible(state.ship))mask.appendChild(el('circle',{cx:state.ship.x,cy:state.ship.y,r:165,fill:'black'}));defs.appendChild(mask);g.appendChild(defs,el('rect',{x:0,y:0,width:WORLD.w,height:WORLD.h,fill:'#172028',opacity:.88,mask:'url(#playerFogMask)'}))}
-function renderMini(){const m=$('miniSvg');m.innerHTML='';m.appendChild(el('rect',{x:0,y:0,width:WORLD.w,height:WORLD.h,fill:'#456d79'}));
-  BASE_TRACE_PATHS.forEach(d=>m.appendChild(el('path',{d,fill:'#c7b482',stroke:'#6a5a43','stroke-width':4})));
-  BASE_GRAND_ISLETS.forEach(o=>m.appendChild(el('circle',{cx:o.x,cy:o.y,r:10,fill:'#c7b482'})));
-  for(const i of state.islands){if(!isVisible(i))continue;const c=centerOfIsland(i);m.appendChild(el('circle',{cx:c.x,cy:c.y,r:15,fill:statusMeta[i.status]?.color||'#d2c092',stroke:'#372f27','stroke-width':4}))}
-  if(state.ship.visible&&isVisible(state.ship))m.appendChild(el('circle',{cx:state.ship.x,cy:state.ship.y,r:12,fill:'#9d5645',stroke:'#f0e5c9','stroke-width':4}));
-  m.appendChild(el('rect',{x:camera.x,y:camera.y,width:camera.w,height:camera.h,fill:'none',stroke:'#fff0bf','stroke-width':12}));
-}
 function renderLists(){const list=$('islandList'),q=$('searchInput').value.trim().toLowerCase(),sea=$('seaFilter').value,st=$('statusFilter').value;let arr=state.islands.filter(isVisible).filter(i=>(!q||i.name.toLowerCase().includes(q)||(i.notes||'').toLowerCase().includes(q))&&(sea==='all'||i.sea===sea)&&(st==='all'||i.status===st)).sort((a,b)=>a.name.localeCompare(b.name,'pt-BR'));list.innerHTML='';if(!arr.length){list.innerHTML='<div class="emptyInspector">Nenhuma ilha encontrada.</div>';return}for(const i of arr){const c=document.createElement('div');c.className='itemCard'+(selected?.type==='island'&&selected.id===i.id?' selected':'');c.innerHTML=`<div class="itemTop"><span class="swatch" style="background:${statusMeta[i.status]?.color||'#777'}"></span><div><b>${esc(i.name)}</b>${i.source==='atlas'?'<span class="originMark">ATLAS</span>':''}<small>${esc(i.sea)} • ${statusMeta[i.status]?.label||''} • ${terrainMeta[i.terrain]||''}${i.visibility==='master'?' • 🔒 Mestre':''}</small></div></div>`;c.onclick=()=>{selectObject('island',i.id);const cc=centerOfIsland(i);centerOn(cc.x,cc.y,2.5)};list.appendChild(c)}}
 function renderStats(){$('statIslands').textContent=state.islands.filter(isVisible).length;$('statVisited').textContent=state.islands.filter(i=>isVisible(i)&&i.status==='visited').length;$('statRoutes').textContent=state.routes.filter(isVisible).length}
-function selectObject(type,id){selected={type,id};renderIslands();renderRoutes();renderShip();renderEdit();renderLists();renderInspector()}
 function clearSelection(){selected=null;renderAll()}
 function selectedIsland(){return selected?.type==='island'?state.islands.find(i=>i.id===selected.id):null}
 function selectedRoute(){return selected?.type==='route'?state.routes.find(r=>r.id===selected.id):null}
@@ -693,30 +627,26 @@ function renderInspector(){const c=$('inspectorContent');if(!selected){c.innerHT
   if(selected.type==='island'){const i=selectedIsland();if(!i){selected=null;return renderInspector()}c.innerHTML=`<div class="subline">${esc(i.sea)} • ${terrainMeta[i.terrain]||'Terreno'}</div><div class="heroName islandInspectorName">${esc(i.name)}</div><div class="badgeRow"><span class="badge ${i.status}">${statusMeta[i.status]?.label||i.status}</span>${i.source==='atlas'?'<span class="badge atlas">Atlas-base</span>':''}${i.visibility==='master'?'<span class="badge master">Somente Mestre</span>':''}</div><div class="infoGrid"><div class="infoBox">Tipo<b>${esc(i.type||'—')}</b></div><div class="infoBox">Dificuldade<b>${esc(i.difficulty||'—')}</b></div><div class="infoBox" style="grid-column:1/-1">Recursos<b>${esc(i.resources||'—')}</b></div></div><div class="notes">${esc(i.notes||'Sem anotações.')}</div><div class="actionGrid"><button id="inspEdit">Editar dados</button><button id="inspShape">Editar costa</button><button id="inspDuplicate">Duplicar</button><button id="inspReveal">${i.visibility==='master'?'Revelar':'Ocultar'}</button></div><div class="editReadout">Escala: <b>${Math.round(i.shapeScale||100)}%</b> · Nome: <b>${i.labelMode==='fixed'?'fixado':'automático'}</b></div><div class="transformRow"><button id="rotL" title="Girar -15°">↶15°</button><button id="rotR" title="Girar +15°">↷15°</button><button id="scaleDown" title="Diminuir">−</button><button id="scaleUp" title="Aumentar">＋</button></div><div class="coastTools"><button id="coastSmooth">Suavizar costa</button><button id="coastSimplify">Simplificar pontos</button></div><div class="labelMeta">Posição do nome — também é possível arrastar o próprio texto usando <b>Mover objeto</b>.</div><div class="labelControls"><button id="lblLeft">←</button><button id="lblUp">↑</button><button id="lblAuto">Auto</button><button id="lblDown">↓</button><button id="lblRight">→</button></div>${i.source==='atlas'?'<button class="fullBtn" id="restoreAtlas">Restaurar posição e forma da referência</button>':''}<button class="fullBtn danger" id="inspDelete">Excluir ilha</button>`;
     $('inspEdit').onclick=()=>openIslandModal(i.id);$('inspShape').onclick=()=>{setTool('reshape');selectObject('island',i.id)};$('inspDuplicate').onclick=()=>duplicateIsland(i);$('inspReveal').onclick=()=>{pushHistory();i.visibility=i.visibility==='master'?'player':'master';renderAll()};$('rotL').onclick=()=>transformIsland(i,1,-15);$('rotR').onclick=()=>transformIsland(i,1,15);$('scaleDown').onclick=()=>transformIsland(i,.9,0);$('scaleUp').onclick=()=>transformIsland(i,1.1,0);$('coastSmooth').onclick=()=>smoothIslandPoints(i);$('coastSimplify').onclick=()=>simplifyIslandPoints(i);$('lblLeft').onclick=()=>nudgeLabel(i,-22,0);$('lblRight').onclick=()=>nudgeLabel(i,22,0);$('lblUp').onclick=()=>nudgeLabel(i,0,-18);$('lblDown').onclick=()=>nudgeLabel(i,0,18);$('lblAuto').onclick=()=>resetLabel(i);if($('restoreAtlas'))$('restoreAtlas').onclick=()=>restoreAtlasIsland(i);$('inspDelete').onclick=()=>deleteSelected();
   }else if(selected.type==='route'){const r=selectedRoute();if(!r){selected=null;return renderInspector()}const a=state.islands.find(i=>i.id===r.a),b=state.islands.find(i=>i.id===r.b);c.innerHTML=`<div class="subline">Rota marítima</div><div class="heroName">${esc(r.label||'Rota sem nome')}</div><div class="badgeRow"><span class="badge">${routeTypeLabel(r.type)}</span>${r.visibility==='master'?'<span class="badge master">Somente Mestre</span>':''}</div><div class="infoGrid"><div class="infoBox">Origem<b>${esc(a?.name||'—')}</b></div><div class="infoBox">Destino<b>${esc(b?.name||'—')}</b></div><div class="infoBox" style="grid-column:1/-1">Tempo<b>${esc(r.travel||'—')}</b></div></div><div class="notes">${esc(r.notes||'Sem anotações.')}</div><div class="actionGrid"><button id="routeEdit">Editar dados</button><button id="routeShape">Editar caminho</button><button id="routeReveal">${r.visibility==='master'?'Revelar':'Ocultar'}</button><button id="routeAddPoint">+ Ponto médio</button></div><button class="fullBtn danger" id="routeDelete">Excluir rota</button>`;$('routeEdit').onclick=()=>openRouteModal(r.id);$('routeShape').onclick=()=>{setTool('reshape');selectObject('route',r.id)};$('routeReveal').onclick=()=>{pushHistory();r.visibility=r.visibility==='master'?'player':'master';renderAll()};$('routeAddPoint').onclick=()=>{pushHistory();const pts=routeFullPoints(r),a0=pts[Math.floor((pts.length-1)/2)],b0=pts[Math.ceil((pts.length-1)/2)],p={x:(a0.x+b0.x)/2,y:(a0.y+b0.y)/2};r.points=r.points||[];r.points.splice(Math.floor(r.points.length/2),0,p);setTool('reshape');renderAll()};$('routeDelete').onclick=()=>deleteSelected();
-  }else if(selected.type==='ship'){const s=state.ship;c.innerHTML=`<div class="subline">Posição atual</div><div class="heroName">${esc(s.name)}</div><div class="badgeRow"><span class="badge known">Navio</span>${s.visibility==='master'?'<span class="badge master">Somente Mestre</span>':''}</div><div class="formMini"><label>Nome</label><input id="shipName" value="${esc(s.name)}"><label>Rotação</label><input id="shipHeading" type="range" min="-180" max="180" value="${s.heading||0}"><label>Visibilidade</label><select id="shipVis"><option value="player" ${s.visibility==='player'?'selected':''}>Jogadores</option><option value="master" ${s.visibility==='master'?'selected':''}>Somente Mestre</option></select></div><div class="actionGrid"><button id="shipMove">Mover navio</button><button id="shipCenter">Centralizar</button></div>`;$('shipName').onchange=e=>{pushHistory();s.name=e.target.value.trim()||'Navio da Tripulação';renderAll()};$('shipHeading').oninput=e=>{s.heading=+e.target.value;renderShip()};$('shipHeading').onchange=()=>{pushHistory();save()};$('shipVis').onchange=e=>{pushHistory();s.visibility=e.target.value;renderAll()};$('shipMove').onclick=()=>setTool('move');$('shipCenter').onclick=()=>centerOn(s.x,s.y,3)} }
+  }else if(selected.type==='ship'){renderShipInspector()} }
 function routeIslandClick(id){if(!routeDraft){routeDraft={a:id,points:[]};routeCursor=null;selectObject('island',id);toast('Origem escolhida. Clique no mar para curvar a rota ou em outra ilha para finalizar.');return}if(routeDraft.a===id){routeDraft=null;routeCursor=null;renderDraft();toast('Rota cancelada.');return}const draft={id:uid('route'),a:routeDraft.a,b:id,points:clone(routeDraft.points),type:'planned',visibility:'player',label:'',travel:'',notes:''};routeDraft=null;routeCursor=null;renderDraft();openRouteModal(null,draft)}
 function routeTypeLabel(t){return({traveled:'Percorrida',planned:'Planejada',permanent:'Permanente',dangerous:'Perigosa',current:'Corrente / Ativa'})[t]||t}
-function setTool(t){tool=t;pane.dataset.tool=t;document.querySelectorAll('button[data-tool]').forEach(b=>b.classList.toggle('active',b.dataset.tool===t));$('floatingInfo').innerHTML=`Ferramenta: <strong>${toolNames[t]}</strong>`;routeDraft=null;routeCursor=null;drawing=null;renderDraft();renderEdit();const hints={draw:'Clique e arraste para desenhar o contorno da ilha.',reshape:'Arraste os pontos. Duplo clique na costa adiciona um ponto; botão direito remove.',route:'Clique numa ilha de origem. Clique no mar para criar curvas e em outra ilha para finalizar.',move:'Arraste uma ilha ou o navio.'};$('drawHint').textContent=hints[t]||'';$('drawHint').classList.toggle('show',!!hints[t])}
-function islandPointerDown(ev,i){if(ev.button!==0)return;if(tool==='move'){ev.stopPropagation();pushHistory();const p=worldPointFromEvent(ev),orig=clone(i.points);moving={kind:'island',id:i.id,start:p,orig};svg.setPointerCapture(ev.pointerId);selectObject('island',i.id)} }
-function shipPointerDown(ev){if(ev.button!==0||tool!=='move')return;ev.stopPropagation();pushHistory();moving={kind:'ship',start:worldPointFromEvent(ev),orig:{x:state.ship.x,y:state.ship.y}};svg.setPointerCapture(ev.pointerId);selectObject('ship','ship')}
+function setTool(t){
+  tool=t;pane.dataset.tool=t;document.querySelectorAll('button[data-tool]').forEach(b=>b.classList.toggle('active',b.dataset.tool===t));
+  $('floatingInfo').innerHTML=`Ferramenta: <strong>${toolNames[t]}</strong>`;routeDraft=null;routeCursor=null;drawing=null;renderDraft();renderEdit();
+  const hints={draw:'Clique e arraste para desenhar o contorno da ilha.',reshape:'Arraste os pontos. Duplo clique na costa adiciona um ponto; botão direito remove.',route:'Clique numa ilha de origem. Clique no mar para criar curvas e em outra ilha para finalizar.',move:'Arraste uma ilha, um nome ou o navio.',sail:'Clique para navegar · ＋ ou Shift + clique adiciona paradas · Arraste o barco para traçar à mão · Esc pausa'};
+  $('drawHint').textContent=hints[t]||'';$('drawHint').classList.toggle('show',!!hints[t]);renderSailingControls();
+}
 function handleIslandDown(ev,i,idx){if(ev.button!==0)return;ev.stopPropagation();pushHistory();reshaping={kind:'island',id:i.id,idx};svg.setPointerCapture(ev.pointerId)}
 function handleRouteDown(ev,r,idx){if(ev.button!==0)return;ev.stopPropagation();pushHistory();reshaping={kind:'route',id:r.id,idx};svg.setPointerCapture(ev.pointerId)}
 function addPointToIsland(i,p){let best=0,dist=Infinity;for(let n=0;n<i.points.length;n++){const a=i.points[n],b=i.points[(n+1)%i.points.length],d=pointLineDist(p,a,b);if(d<dist){dist=d;best=n+1}}pushHistory();i.points.splice(best,0,p);renderAll();toast('Ponto adicionado ao contorno.')}
-function nudgeLabel(i,dx,dy){pushHistory();i.labelDx=Number(i.labelDx||0)+dx;i.labelDy=(Number.isFinite(Number(i.labelDy))?Number(i.labelDy):labelDefaultDy(i,bboxOf(i.points)))+dy;renderAll()}
-function resetLabel(i){pushHistory();i.labelDx=0;i.labelDy=labelDefaultDy(i,bboxOf(i.points));renderAll()}
 function smoothIslandPoints(i){if(i.points.length<5)return;pushHistory();const p=i.points,n=p.length;i.points=p.map((q,k)=>{const a=p[(k-1+n)%n],b=p[(k+1)%n];return{x:(a.x+q.x*2+b.x)/4,y:(a.y+q.y*2+b.y)/4}});renderAll()}
 function simplifyIslandPoints(i){if(i.points.length<=8)return toast('A costa já está simples.');pushHistory();i.points=i.points.filter((_,k)=>k%2===0);if(i.points.length<5)i.points=i.points.concat(i.points.slice(0,5-i.points.length));renderAll()}
-function restoreAtlasIsland(i){const src=ATLAS_ISLANDS.find(a=>a.id===i.id);if(!src)return;pushHistory();const keep={status:i.status,visibility:i.visibility,difficulty:i.difficulty,resources:i.resources,notes:i.notes};Object.assign(i,clone(src),keep);renderAll();toast('Forma original restaurada.')}
-function labelPointerDown(ev,i){if(ev.button!==0)return;ev.stopPropagation();selectObject('island',i.id);if(tool!=='move')return;pushHistory();const p=worldPointFromEvent(ev),b=bboxOf(i.points);moving={kind:'label',id:i.id,start:p,orig:{dx:Number(i.labelDx||0),dy:Number.isFinite(Number(i.labelDy))?Number(i.labelDy):labelDefaultDy(i,b)}};svg.setPointerCapture(ev.pointerId)}
-function transformIsland(i,scale=1,deg=0){pushHistory();const c=centerOfIsland(i),rad=deg*Math.PI/180,co=Math.cos(rad),si=Math.sin(rad);i.points=i.points.map(p=>{let x=(p.x-c.x)*scale,y=(p.y-c.y)*scale;return{x:clamp(c.x+x*co-y*si,0,WORLD.w),y:clamp(c.y+x*si+y*co,0,WORLD.h)}});renderAll()}
 function duplicateIsland(i){pushHistory();const copy=clone(i);copy.id=uid('isl');copy.name=i.name+' (Cópia)';copy.source='user';copy.sourceShape='duplicate';copy.points=copy.points.map(p=>({x:clamp(p.x+55,0,WORLD.w),y:clamp(p.y+40,0,WORLD.h)}));state.islands.push(copy);selectObject('island',copy.id);renderAll();toast('Ilha duplicada.')}
-function openIslandModal(id=null,points=null){editingIslandId=id;pendingIslandPoints=points;const i=id?state.islands.find(x=>x.id===id):null;$('islandModalTitle').textContent=i?'Editar Ilha':'Nova Ilha';$('fName').value=i?.name||'';$('fSea').value=i?.sea||guessSea(points?bboxOf(points).cx:1200,points?bboxOf(points).cy:750);$('fTerrain').value=i?.terrain||'generic';$('fStatus').value=i?.status||'known';$('fVisibility').value=i?.visibility||'player';$('fType').value=i?.type||'';$('fDifficulty').value=i?.difficulty||'';$('fResources').value=i?.resources||'';$('fLabelPriority').value=String(i?.labelPriority||2);$('fLabelSize').value=String(i?.labelSize||15);$('fSmooth').value=String(i?.smooth??.72);$('fNotes').value=i?.notes||'';$('islandModal').classList.add('show');setTimeout(()=>$('fName').focus(),30)}
-function guessSea(x,y){if(y>575&&y<927)return'Grand Line';if(x<1100&&y<575)return'North Blue';if(x>1350&&y<575)return'East Blue';if(x<1100&&y>927)return'West Blue';if(x>1350&&y>927)return'South Blue';return'Outro'}
 function openRouteModal(id=null,draft=null){editingRouteId=id;const r=id?state.routes.find(x=>x.id===id):draft;if(!r)return;$('routeDesc').textContent=id?'Edite os dados desta rota.':'A rota já foi traçada. Defina como ela aparece no atlas.';$('rType').value=r.type||'planned';$('rVisibility').value=r.visibility||'player';$('rLabel').value=r.label||'';$('rTravel').value=r.travel||'';$('rNotes').value=r.notes||'';$('routeModal').dataset.draft=draft?JSON.stringify(draft):'';$('routeModal').classList.add('show')}
 function deleteSelected(){if(!selected)return;if(selected.type==='island'){const i=selectedIsland();if(!i||!confirm(`Excluir “${i.name}” e todas as rotas conectadas?`))return;pushHistory();state.islands=state.islands.filter(x=>x.id!==i.id);state.routes=state.routes.filter(r=>r.a!==i.id&&r.b!==i.id)}else if(selected.type==='route'){const r=selectedRoute();if(!r||!confirm('Excluir esta rota?'))return;pushHistory();state.routes=state.routes.filter(x=>x.id!==r.id)}else return;selected=null;renderAll();toast('Objeto excluído.')}
 function cancelDraft(){drawing=null;routeDraft=null;routeCursor=null;moving=null;reshaping=null;renderDraft();renderEdit()}
 svg.addEventListener('pointerdown',ev=>{if(ev.button!==0)return;if(ev.target.closest('.islandPath,.islandLabel,.route,.shipGroup,.handle'))return;const p=worldPointFromEvent(ev);if(tool==='draw'){drawing={points:[p],pointerId:ev.pointerId};svg.setPointerCapture(ev.pointerId);return}if(tool==='route'){if(routeDraft){routeDraft.points.push(p);renderDraft();toast('Ponto de rota adicionado. Clique numa ilha para concluir.')}return}if(tool==='pan'||spaceDown){panning={clientX:ev.clientX,clientY:ev.clientY,camera:clone(camera)};svg.setPointerCapture(ev.pointerId);pane.classList.add('panning');return}if(tool==='select'){clearSelection()}});
-svg.addEventListener('pointermove',ev=>{const p=worldPointFromEvent(ev);if(drawing){const a=drawing.points[drawing.points.length-1];if(Math.hypot(p.x-a.x,p.y-a.y)>4) drawing.points.push(p);renderDraft();return}if(moving){if(moving.kind==='island'){const i=state.islands.find(x=>x.id===moving.id),dx=p.x-moving.start.x,dy=p.y-moving.start.y;i.points=moving.orig.map(q=>({x:clamp(q.x+dx,0,WORLD.w),y:clamp(q.y+dy,0,WORLD.h)}));renderIslands();renderRoutes();renderEdit();renderMini()}else if(moving.kind==='label'){const i=state.islands.find(x=>x.id===moving.id),dx=p.x-moving.start.x,dy=p.y-moving.start.y;i.labelDx=moving.orig.dx+dx;i.labelDy=moving.orig.dy+dy;renderIslands()}else{state.ship.x=clamp(moving.orig.x+p.x-moving.start.x,0,WORLD.w);state.ship.y=clamp(moving.orig.y+p.y-moving.start.y,0,WORLD.h);renderShip();renderFog();renderMini()}return}if(reshaping){if(reshaping.kind==='island'){const i=state.islands.find(x=>x.id===reshaping.id);i.points[reshaping.idx]=p;renderIslands();renderRoutes();renderEdit();renderMini()}else{const r=state.routes.find(x=>x.id===reshaping.id);r.points[reshaping.idx]=p;renderRoutes();renderEdit()}return}if(panning){const box=svg.getBoundingClientRect(),dx=(ev.clientX-panning.clientX)/box.width*panning.camera.w,dy=(ev.clientY-panning.clientY)/box.height*panning.camera.h;camera.x=panning.camera.x-dx;camera.y=panning.camera.y-dy;setCamera();return}if(routeDraft){routeCursor=p;renderDraft()}});
+svg.addEventListener('pointermove',ev=>{const p=worldPointFromEvent(ev);if(drawing){const a=drawing.points[drawing.points.length-1];if(Math.hypot(p.x-a.x,p.y-a.y)>4) drawing.points.push(p);renderDraft();return}if(moving){if(moving.kind==='island'){const i=state.islands.find(x=>x.id===moving.id),dx=p.x-moving.start.x,dy=p.y-moving.start.y;i.points=moving.orig.map(q=>({x:clamp(q.x+dx,0,WORLD.w),y:clamp(q.y+dy,0,WORLD.h)}));renderIslands();renderRoutes();renderEdit();renderMini()}else if(moving.kind==='label'){const i=state.islands.find(x=>x.id===moving.id),dx=p.x-moving.start.x,dy=p.y-moving.start.y;i.labelDx=moving.orig.dx+dx;i.labelDy=moving.orig.dy+dy;renderIslands()}else{moveShipDrag(p)}return}if(reshaping){if(reshaping.kind==='island'){const i=state.islands.find(x=>x.id===reshaping.id);i.points[reshaping.idx]=p;renderIslands();renderRoutes();renderEdit();renderMini()}else{const r=state.routes.find(x=>x.id===reshaping.id);r.points[reshaping.idx]=p;renderRoutes();renderEdit()}return}if(panning){const box=svg.getBoundingClientRect(),dx=(ev.clientX-panning.clientX)/box.width*panning.camera.w,dy=(ev.clientY-panning.clientY)/box.height*panning.camera.h;camera.x=panning.camera.x-dx;camera.y=panning.camera.y-dy;setCamera();return}if(routeDraft){routeCursor=p;renderDraft()}});
 svg.addEventListener('pointerup',ev=>{if(drawing){let pts=drawing.points;drawing=null;if(pts.length<8){renderDraft();return toast('Desenhe um contorno maior para criar a ilha.')}pts=simplifyClosed(pts,Math.max(3,camera.w/WORLD.w*7));const b=bboxOf(pts);if(b.w<18||b.h<18){renderDraft();return toast('A ilha ficou pequena demais.')}pendingIslandPoints=pts;renderDraft();openIslandModal(null,pts);return}if(moving){moving=null;save();renderAll();return}if(reshaping){reshaping=null;save();renderAll();return}if(panning){panning=null;pane.classList.remove('panning');return}});
 svg.addEventListener('click',ev=>{const islandPath=ev.target.closest?.('.islandPath');if(tool==='route'&&islandPath){ev.stopPropagation();const id=islandPath.dataset.id;if(!routeDraft){routeDraft={a:id,points:[]};routeCursor=null;selectObject('island',id);toast('Origem escolhida. Clique no mar para curvar a rota ou em outra ilha para finalizar.')}else if(routeDraft.a===id){routeDraft=null;routeCursor=null;renderDraft();toast('Rota cancelada.')}else{const draft={id:uid('route'),a:routeDraft.a,b:id,points:clone(routeDraft.points),type:'planned',visibility:'player',label:'',travel:'',notes:''};routeDraft=null;routeCursor=null;renderDraft();openRouteModal(null,draft)}}});
 svg.addEventListener('wheel',ev=>{ev.preventDefault();zoomAt(ev,ev.deltaY<0?.86:1.16)},{passive:false});svg.addEventListener('contextmenu',ev=>{if(tool==='route'&&routeDraft){ev.preventDefault();routeDraft=null;routeCursor=null;renderDraft();toast('Rota cancelada.')}});
@@ -738,15 +668,13 @@ function togglePanel(side){const panel=$(side==='left'?'sidebar':'inspector'),op
 $('leftPanelBtn').onclick=()=>togglePanel('left');$('rightPanelBtn').onclick=()=>togglePanel('right');$('edgeLeft').onclick=()=>togglePanel('left');$('edgeRight').onclick=()=>togglePanel('right');
 $('referenceFile').onchange=e=>{const f=e.target.files?.[0];if(!f)return;if(referenceURL)URL.revokeObjectURL(referenceURL);referenceURL=URL.createObjectURL(f);const g=$('referenceLayer');g.innerHTML='';g.appendChild(el('image',{href:referenceURL,x:0,y:0,width:WORLD.w,height:WORLD.h,preserveAspectRatio:'none',opacity:$('referenceOpacity').value/100,class:'referenceImage'}));toast('Referência carregada. Ela não será salva.')};$('referenceOpacity').oninput=e=>{const im=$('referenceLayer').querySelector('image');if(im)im.setAttribute('opacity',e.target.value/100)};$('removeReference').onclick=()=>{if(referenceURL)URL.revokeObjectURL(referenceURL);referenceURL=null;$('referenceLayer').innerHTML='';$('referenceFile').value='';toast('Referência removida.')};
 $('exportJson').onclick=()=>downloadBlob('new_frontier_atlas_cartografico_v4.json',JSON.stringify({format:'OP-New-Frontier-Vector-Atlas',version:4,exportedAt:new Date().toISOString(),state},null,2),'application/json');
-$('importJson').onchange=async e=>{const f=e.target.files?.[0];if(!f)return;try{const d=JSON.parse(await f.text()),s=d.state||d;if(!Array.isArray(s.islands))throw new Error('Formato inválido');pushHistory();state=normalizeImported(s);selected=null;applyAppearance();buildBase();syncControls();renderAll();fitView();toast('Backup importado.')}catch(err){alert('Não consegui ler este backup: '+err.message)}finally{e.target.value=''}};
-function normalizeImported(s){const out={...state,...s,version:4,layers:{...state.layers,...(s.layers||{})},ship:{...state.ship,...(s.ship||{})}};out.islands=(s.islands||[]).map(i=>{if(Array.isArray(i.points)&&i.points.length>=3)return{terrain:'generic',visibility:'player',status:'known',sea:'Outro',source:i.source||'user',labelPriority:i.labelPriority||2,labelSize:i.labelSize||15,smooth:i.smooth??.72,...i};const x=+i.x||1200,y=+i.y||750,r=28;return{id:i.id||uid('isl'),name:i.name||'Ilha importada',sea:i.sea||'Outro',status:i.status||'known',terrain:'generic',visibility:'player',source:'user',labelPriority:2,labelSize:15,smooth:.72,type:i.type||'',difficulty:i.difficulty||'',resources:i.resources||'',notes:i.notes||'',points:Array.from({length:11},(_,n)=>{const a=n/11*Math.PI*2,rr=r*(.8+((n*7)%5)/12);return{x:x+Math.cos(a)*rr,y:y+Math.sin(a)*rr}})}});out.islands=mergeAtlasIslands(out.islands);out.routes=(s.routes||[]).map(r=>({...r,type:r.type==='done'?'traveled':(r.type||'planned'),visibility:r.visibility||'player',points:r.points||[],travel:r.travel||'',notes:r.notes||''}));return out}
+$('importJson').onchange=async e=>{const f=e.target.files?.[0];if(!f)return;try{const d=JSON.parse(await f.text()),s=d.state||d;if(!Array.isArray(s.islands))throw new Error('Formato inválido');pushHistory();pauseSailing(false);state=normalizeImported(s);selected=null;applyAppearance();buildBase();syncControls();renderAll();fitView();toast('Backup importado.')}catch(err){alert('Não consegui ler este backup: '+err.message)}finally{e.target.value=''}};
 $('exportSvg').onclick=exportSVG;$('exportPng').onclick=exportPNG;
-function makeExportSVG(){const cloneSvg=svg.cloneNode(true);['editLayer','draftLayer','fogLayer','referenceLayer'].forEach(id=>cloneSvg.querySelector('#'+id)?.remove());cloneSvg.setAttribute('xmlns',NS);cloneSvg.setAttribute('width',WORLD.w);cloneSvg.setAttribute('height',WORLD.h);cloneSvg.setAttribute('viewBox',`0 0 ${WORLD.w} ${WORLD.h}`);const style=document.createElementNS(NS,'style');style.textContent=`.islandPath{stroke:#59442d;stroke-width:4}.islandLabel{font:400 16px Georgia;fill:#35271b;stroke:#f6e9c9;stroke-width:5;paint-order:stroke;text-anchor:middle}.route{fill:none;stroke-linecap:round;stroke-linejoin:round}.route.traveled{stroke:#e4c45b;stroke-width:5;stroke-dasharray:12 9}.route.planned{stroke:#f5f0e1;stroke-width:4;stroke-dasharray:18 13}.route.permanent{stroke:#34281f;stroke-width:5}.route.dangerous{stroke:#c64c3d;stroke-width:6;stroke-dasharray:4 8}.route.current{stroke:#83e5ef;stroke-width:5;stroke-dasharray:10 8}.routeLabel{font:800 13px Arial;fill:#fff5db;stroke:#35271b;stroke-width:4;paint-order:stroke;text-anchor:middle}.world-label{font:900 38px Georgia;fill:#f4e8c9;stroke:#2e4750;stroke-width:5;paint-order:stroke;text-anchor:middle}.base-land{fill:#c7b482;stroke:#665844;stroke-width:2}.base-land.redLine{fill:#c7b482;stroke:#665844;stroke-width:2}.redLineOverlay{fill:none;stroke:#a94f45;stroke-linecap:round}.redLineRidge{fill:none;stroke:#68332f}.base-shelf{fill:none;stroke:#decda5;stroke-width:14;opacity:.4}.base-islet{fill:#c7b482;stroke:#665844;stroke-width:1.5}.base-place-label{font:700 15px Georgia;fill:#6b4e2f;stroke:#eadbb8;stroke-width:4;paint-order:stroke;text-anchor:middle}.relief{fill:#5e4c37;stroke:#efe0bc;stroke-width:1.2}`;cloneSvg.insertBefore(style,cloneSvg.firstChild);return cloneSvg}
 function exportSVG(){const data=new XMLSerializer().serializeToString(makeExportSVG());downloadBlob('new_frontier_mapa_vetorial.svg',data,'image/svg+xml;charset=utf-8');toast('SVG exportado sem perda de qualidade.')}
 function exportPNG(){const data=new XMLSerializer().serializeToString(makeExportSVG()),blob=new Blob([data],{type:'image/svg+xml'}),url=URL.createObjectURL(blob),img=new Image();img.onload=()=>{const scale=1.5,can=document.createElement('canvas');can.width=WORLD.w*scale;can.height=WORLD.h*scale;const ctx=can.getContext('2d');ctx.drawImage(img,0,0,can.width,can.height);URL.revokeObjectURL(url);can.toBlob(b=>{const u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download='new_frontier_mapa.png';a.click();setTimeout(()=>URL.revokeObjectURL(u),1000)},'image/png')};img.onerror=()=>{URL.revokeObjectURL(url);alert('Não consegui converter o SVG para PNG neste navegador.')};img.src=url}
 function downloadBlob(name,data,type){const blob=new Blob([data],{type}),u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(u),1000);toast('Arquivo exportado.')}
 $('resetAtlas').onclick=()=>{if(!confirm('Restaurar todas as ilhas do atlas-base para suas formas e nomes originais? Ilhas criadas por vocês serão mantidas.'))return;pushHistory();const users=state.islands.filter(i=>i.source!=='atlas');state.islands=atlasDefaults().concat(users);state.routes=state.routes.filter(r=>state.islands.some(i=>i.id===r.a)&&state.islands.some(i=>i.id===r.b));selected=null;renderAll();toast('Atlas-base restaurado.')}
-$('clearMap').onclick=()=>{if(!confirm('Apagar ilhas criadas, rotas e redefinir o navio? As ilhas do atlas-base serão restauradas.'))return;pushHistory();state.islands=atlasDefaults();state.routes=[];state.ship={id:'ship',name:'Navio da Tripulação',x:5000,y:2240,heading:-12,visibility:'player',visible:true};selected=null;renderAll();toast('Mapa limpo; atlas-base preservado.')};
+$('clearMap').onclick=()=>{if(!confirm('Apagar ilhas criadas, rotas e redefinir o navio? As ilhas do atlas-base serão restauradas.'))return;pushHistory();pauseSailing(false);state.islands=atlasDefaults();state.routes=[];state.voyage=voyageDefaults();state.ship={id:'ship',name:'Navio da Tripulação',x:5000,y:2240,heading:-12,visibility:'player',visible:true};selected=null;renderAll();toast('Mapa limpo; atlas-base preservado.')};
 window.addEventListener('keydown',e=>{if(['INPUT','TEXTAREA','SELECT'].includes(document.activeElement.tagName))return;if(e.code==='Space'){spaceDown=true;e.preventDefault()}if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='z'){e.preventDefault();e.shiftKey?redo():undo();return}if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='y'){e.preventDefault();redo();return}const k=e.key.toLowerCase();if(k==='v')setTool('select');if(k==='h')setTool('pan');if(k==='i')setTool('draw');if(k==='m')setTool('move');if(k==='e')setTool('reshape');if(k==='r')setTool('route');if(e.key==='Escape'){cancelDraft();setTool('select');document.querySelectorAll('.modalBack').forEach(m=>m.classList.remove('show'))}if((e.key==='Delete'||e.key==='Backspace')&&selected){e.preventDefault();deleteSelected()}});window.addEventListener('keyup',e=>{if(e.code==='Space')spaceDown=false});window.addEventListener('resize',()=>{setTimeout(setCamera,50)});
 const APPEARANCE_DEFAULTS={sea:'#537982',red:'#ac5046',land:'#d4c094',coast:'#624834',texture:45,labelScale:100,density:'balanced',leaders:true,avoidOverlap:true};
 let lastLabelLayout=new Map(),layoutFrame=0,appearanceHistoryOpen=false,lastIslandClick={id:null,time:0};
@@ -768,12 +696,14 @@ function mergeAtlasIslands(existing=[]){
     }
     i.referenceRevision=1;
   }
-  return out;
+  enlargeUneditedIslands(out);return out;
 }
 function normalizeImported(s){
   const out={...state,...s,version:4,appearance:{...APPEARANCE_DEFAULTS,...s.appearance},layers:{...state.layers,...s.layers},ship:{...state.ship,...s.ship}};
   out.islands=(s.islands||[]).map(i=>({terrain:'generic',visibility:'player',status:'known',sea:'Outro',source:'user',labelPriority:2,labelSize:24,smooth:.5,featureKind:'island',labelMode:'auto',shapeScale:100,...i,points:Array.isArray(i.points)&&i.points.length>=3?i.points:defaultIslandPoints(+i.x||2800,+i.y||1600)}));
   out.islands=mergeAtlasIslands(out.islands);
+  out.voyage=normalizeVoyage(s.voyage);
+  out.ship.x=clamp(Number(out.ship.x)||0,0,WORLD.w);out.ship.y=clamp(Number(out.ship.y)||0,0,WORLD.h);
   out.routes=(s.routes||[]).map(r=>({...r,type:r.type==='done'?'traveled':(r.type||'planned'),visibility:r.visibility||'player',points:r.points||[],travel:r.travel||'',notes:r.notes||''}));
   return out;
 }
@@ -781,8 +711,11 @@ function load(){
   let saved=null;try{saved=JSON.parse(localStorage.getItem(KEY)||localStorage.getItem(OLD_KEY)||'null')}catch(e){}
   state=normalizeImported(saved||state);applyAppearance();syncControls();buildBase();buildGrid();fitView();renderAll();updateHistoryButtons();
 }
-function snapshot(){return JSON.stringify({islands:state.islands,routes:state.routes,ship:state.ship,layers:state.layers,viewMode:state.viewMode,appearance:state.appearance})}
-function restoreSnapshot(raw){historyMute=true;Object.assign(state,JSON.parse(raw));historyMute=false;applyAppearance();buildBase();syncControls();renderAll()}
+function snapshot(){return JSON.stringify({islands:state.islands,routes:state.routes,ship:state.ship,layers:state.layers,viewMode:state.viewMode,appearance:state.appearance,voyage:state.voyage})}
+function restoreSnapshot(raw){
+  pauseSailing(false);historyMute=true;Object.assign(state,JSON.parse(raw));state.voyage=normalizeVoyage(state.voyage);historyMute=false;
+  applyAppearance();buildBase();syncControls();renderAll();
+}
 function save(doRender=false){try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){if(!save.warned){toast('Armazenamento cheio. Exporte um backup JSON para guardar o mapa.');save.warned=true}}if(doRender)renderAll()}
 function applyAppearance(){
   state.appearance={...APPEARANCE_DEFAULTS,...state.appearance};const a=state.appearance;
@@ -827,9 +760,9 @@ function buildBase(){
 }
 function setCamera(){
   svg.setAttribute('viewBox',`${camera.x} ${camera.y} ${camera.w} ${camera.h}`);$('zoomRead').textContent=Math.round(WORLD.w/camera.w*100)+'%';
-  renderMini();cancelAnimationFrame(layoutFrame);layoutFrame=requestAnimationFrame(()=>{renderIslands();renderEdit()});
+  renderMini();renderShip();renderVoyage();cancelAnimationFrame(layoutFrame);layoutFrame=requestAnimationFrame(()=>{renderIslands();renderEdit()});
 }
-function renderAll(){renderRoutes();renderIslands();renderShip();renderEdit();renderFog();renderLists();renderInspector();renderStats();applyLayerVisibility();renderMini();save(false)}
+function renderAll(){renderRoutes();renderVoyage();renderIslands();renderShip();renderEdit();renderFog();renderLists();renderInspector();renderStats();applyLayerVisibility();renderMini();renderSailingControls();save(false)}
 function pixelScale(){return Math.max(.025,Math.min(svg.clientWidth/camera.w,svg.clientHeight/camera.h))}
 function labelDefaultDy(i,b){return i.featureKind==='locality'?-23:-(Math.max(10,b.h/2)+18)}
 function labelLines(name){
@@ -840,7 +773,8 @@ function labelLines(name){
 function labelBox(x,y,w,h){return {x1:x-w/2,x2:x+w/2,y1:y-h/2,y2:y+h/2}}
 function activateIsland(ev,i){ev.stopPropagation();if(tool==='pan'||spaceDown)return;if(tool==='route'){routeIslandClick(i.id);return}const now=performance.now(),double=lastIslandClick.id===i.id&&now-lastIslandClick.time<450;lastIslandClick={id:i.id,time:now};if(double&&tool==='select'){openIslandModal(i.id);return}selectObject('island',i.id)}
 function renderIslands(forExport=false){
-  const g=$('islandLayer');g.replaceChildren();lastLabelLayout=new Map();const scale=pixelScale(),visible=state.islands.filter(isVisible),queue=[],obstacles=[];
+  const g=$('islandLayer');g.replaceChildren();lastLabelLayout=new Map();
+  const scale=pixelScale(),visible=state.islands.filter(isVisible),queue=[],obstacles=[],padding=4/scale;
   const pathLayer=el('g'),hitLayer=el('g'),leaderLayer=el('g'),textLayer=el('g');g.append(hitLayer,pathLayer,leaderLayer,textLayer);
   for(const i of visible){
     const b=bboxOf(i.points),c={x:b.cx,y:b.cy},local=i.featureKind==='locality',sel=selected?.type==='island'&&selected.id===i.id,d=smoothClosedPath(i.points,Number(i.smooth??.5));
@@ -849,65 +783,70 @@ function renderIslands(forExport=false){
     const path=el('path',{d,fill:i.customColor||(i.terrain==='generic'?'url(#islandPaint)':`url(#terrain-${i.terrain||'generic'})`),style:i.customColor?'fill:'+i.customColor:null,class:'islandPath'+cls,'data-id':i.id});
     path.appendChild(el('title',{},`${i.name} — ${i.sea}`));pathLayer.appendChild(path);
     let nearest=Infinity;for(const other of visible){if(i.id===other.id)continue;const o=centerOfIsland(other);nearest=Math.min(nearest,Math.hypot(c.x-o.x,c.y-o.y))}
-    const hit=el('circle',{cx:c.x,cy:c.y,r:Math.max(3,Math.min(8/scale,nearest*.4)),class:'islandHit','data-id':i.id,'aria-label':i.name});hitLayer.appendChild(hit);
+    const hit=el('circle',{cx:c.x,cy:c.y,r:Math.max(3,Math.min(9/scale,nearest*.4)),class:'islandHit','data-id':i.id,'aria-label':i.name});hitLayer.appendChild(hit);
     for(const node of [path,hit]){
       node.addEventListener('pointerdown',ev=>islandPointerDown(ev,i));node.addEventListener('click',ev=>activateIsland(ev,i));
-      node.addEventListener('dblclick',ev=>{ev.stopPropagation();if(tool==='reshape')addPointToIsland(i,worldPointFromEvent(ev));else openIslandModal(i.id)});
+      node.addEventListener('dblclick',ev=>{if(tool==='sail')return;ev.stopPropagation();if(tool==='reshape')addPointToIsland(i,worldPointFromEvent(ev));else openIslandModal(i.id)});
       node.addEventListener('contextmenu',ev=>{ev.preventDefault();ev.stopPropagation();selectObject('island',i.id);openIslandModal(i.id)});
     }
-    if(Math.max(b.w,b.h)*scale<90)obstacles.push({...labelBox(c.x,c.y,Math.max(b.w,5/scale),Math.max(b.h,5/scale)),id:i.id});
+    if(Math.max(b.w,b.h)*scale<100)obstacles.push({...labelBox(c.x,c.y,Math.max(b.w,6/scale),Math.max(b.h,6/scale)),id:i.id});
     if(!state.layers.labels||i.labelHidden)continue;
     if(b.maxX<camera.x-300||b.minX>camera.x+camera.w+300||b.maxY<camera.y-300||b.minY>camera.y+camera.h+300)continue;
     const priority=clamp(Number(i.labelPriority)||2,1,3);if(state.appearance.density==='main'&&priority<3&&!sel)continue;
     const targetSize=(Number(i.labelSize)||24)*state.appearance.labelScale/100;
-    const size=Math.max(targetSize,10/scale*state.appearance.labelScale/100),lines=labelLines(i.name);
-    canvasMeasure.font=`600 ${size}px Georgia`;const w=Math.max(...lines.map(l=>canvasMeasure.measureText(l).width)),h=size*1.13*lines.length;
+    const size=Math.max(targetSize,(priority===3?13.5:12)/scale*state.appearance.labelScale/100),lines=labelLines(i.name),weight=priority===3?700:600;
+    canvasMeasure.font=`${weight} ${size}px Georgia`;
+    const w=Math.max(...lines.map(l=>canvasMeasure.measureText(l).width))+padding*2,h=size*1.13*lines.length+padding*1.5;
     const dy=i.labelDy!==null&&Number.isFinite(+i.labelDy)?+i.labelDy:labelDefaultDy(i,b);
-    queue.push({i,b,c,size,lines,w,h,priority,sel,desired:{x:c.x+(+i.labelDx||0),y:c.y+dy}});
+    queue.push({i,b,c,size,lines,w,h,weight,priority,sel,desired:{x:c.x+(+i.labelDx||0),y:c.y+dy}});
   }
-  // Reserve the region titles at their real rendered bounds.
   const placed=[],matrix=svg.getScreenCTM()?.inverse();
   const reserve=node=>{if(!matrix||!node)return;const b=node.getBoundingClientRect();if(!b.width||!b.height)return;const a=new DOMPoint(b.left,b.top).matrixTransform(matrix),c=new DOMPoint(b.right,b.bottom).matrixTransform(matrix);placed.push({x1:a.x,x2:c.x,y1:a.y,y2:c.y})};
   if(state.layers.base&&state.layers.labels)$('baseLabelLayer').querySelectorAll('text').forEach(reserve);
-  if(!forExport)document.querySelectorAll('.minimapWrap,.floatingInfo,.chartCartouche,.mapControls,.zoomRead,.compassRose').forEach(reserve);
-  queue.sort((a,b)=>(b.i.labelMode==='fixed')-(a.i.labelMode==='fixed')||b.sel-a.sel||b.priority-a.priority||a.i.id.localeCompare(b.i.id));
+  if(!forExport)document.querySelectorAll('.minimapWrap,.floatingInfo,.chartCartouche,.mapControls,.zoomRead,.compassRose,#sailingDock').forEach(reserve);
+  if(state.layers.ship&&state.ship.visible&&isVisible(state.ship))obstacles.push({...labelBox(state.ship.x,state.ship.y,34/scale,45/scale),id:'ship'});
+  // Selected and manually placed names keep priority. Distant details appear as you zoom in.
+  queue.sort((a,b)=>b.sel-a.sel||(b.i.labelMode==='fixed')-(a.i.labelMode==='fixed')||b.priority-a.priority||(b.i.source==='user')-(a.i.source==='user')||a.i.id.localeCompare(b.i.id));
   for(const L of queue){
-    const {i,b,c,size,lines,w,h,desired,priority,sel}=L,fixed=i.labelMode==='fixed',gap=7/scale,candidates=[];
+    const {i,b,c,size,lines,w,h,weight,desired,priority,sel}=L,fixed=i.labelMode==='fixed',gap=7/scale,candidates=[];
     if(fixed)candidates.push(desired);
     else{
       candidates.push(desired,{x:c.x,y:b.minY-gap-h/2},{x:c.x,y:b.maxY+gap+h/2},{x:b.maxX+gap+w/2,y:c.y},{x:b.minX-gap-w/2,y:c.y});
-      const rings=state.appearance.density==='all'?12:6;
-      for(let n=1;n<=rings;n++)for(const [dx,dy] of [[0,-1],[0,1],[1,0],[-1,0],[1,-1],[-1,-1],[1,1],[-1,1]])candidates.push({x:c.x+dx*(w*.52+gap*n),y:c.y+dy*(h*.6+gap*n)});
+      const rings=state.appearance.density==='all'?15:9;
+      for(let n=1;n<=rings;n++)for(const [dx,dy]of [[0,-1],[0,1],[1,0],[-1,0],[1,-1],[-1,-1],[1,1],[-1,1]])candidates.push({x:c.x+dx*(w*.52+gap*n),y:c.y+dy*(h*.6+gap*n)});
     }
     let pick=null,box=null;
     for(const q of candidates){
       const bb=labelBox(q.x,q.y,w,h),bounds=bb.x1>=8/scale&&bb.x2<=WORLD.w-8/scale&&bb.y1>=40&&bb.y2<=2960;
-      const fits=!placed.some(p=>boxesOverlap(bb,p,5/scale))&&!obstacles.some(p=>p.id!==i.id&&boxesOverlap(bb,p,3/scale));
-      // Own coastline must remain visible for small islands and settlements.
-      const ownClear=Math.max(b.w,b.h)*scale>80||!boxesOverlap(bb,{x1:b.minX,x2:b.maxX,y1:b.minY,y2:b.maxY},2/scale);
+      const fits=!placed.some(p=>boxesOverlap(bb,p,4/scale))&&!obstacles.some(p=>p.id!==i.id&&boxesOverlap(bb,p,3/scale));
+      const ownClear=Math.max(b.w,b.h)*scale>110||!boxesOverlap(bb,{x1:b.minX,x2:b.maxX,y1:b.minY,y2:b.maxY},2/scale);
       if(fixed||(bounds&&fits&&ownClear)){pick=q;box=bb;break}
     }
     if(!pick){if(!sel)continue;pick=desired;box=labelBox(pick.x,pick.y,w,h)}
     placed.push(box);lastLabelLayout.set(i.id,{...pick,size,box});
-    const dx=pick.x-c.x,dy=pick.y-c.y,dist=Math.hypot(dx,dy),small=Math.max(b.w,b.h)*scale<80;
-    if(state.appearance.leaders&&small&&dist*scale>12){
+    const dx=pick.x-c.x,dy=pick.y-c.y,dist=Math.hypot(dx,dy),small=Math.max(b.w,b.h)*scale<110;
+    if(state.appearance.leaders&&small&&dist*scale>10){
       const edge=Math.min(Math.abs(dx)>0?b.w/2/Math.abs(dx):Infinity,Math.abs(dy)>0?b.h/2/Math.abs(dy):Infinity,1);
       const sx=c.x+dx*edge,sy=c.y+dy*edge,ex=clamp(c.x,box.x1,box.x2),ey=clamp(c.y,box.y1,box.y2);
-      leaderLayer.appendChild(el('path',{d:`M${sx} ${sy}L${ex} ${ey}`,class:'labelLeader'}));
+      leaderLayer.append(el('path',{d:`M${sx} ${sy}L${ex} ${ey}`,class:'labelLeader'}),el('circle',{cx:sx,cy:sy,r:1.6/scale,class:'labelDot'}));
     }
-    const t=el('text',{x:pick.x,y:pick.y,style:`font-size:${size}px`,class:'islandLabel priority-'+priority+(sel?' selectedLabel':''),'data-id':i.id,'data-fixed':fixed?'true':'false'});
+    const label=el('g',{class:'islandNameplate'+(sel?' selectedNameplate':''),'data-id':i.id});
+    label.appendChild(el('rect',{x:box.x1,y:box.y1,width:w,height:h,rx:3/scale,class:'labelPaper'}));
+    const t=el('text',{x:pick.x,y:pick.y,style:`font-size:${size}px;font-weight:${weight}`,class:'islandLabel priority-'+priority+(sel?' selectedLabel':''),'data-id':i.id,'data-fixed':fixed?'true':'false'});
     lines.forEach((line,n)=>t.appendChild(el('tspan',{x:pick.x,y:pick.y+(n-(lines.length-1)/2)*size*1.13},line)));
-    t.addEventListener('pointerdown',ev=>labelPointerDown(ev,i));t.addEventListener('click',ev=>activateIsland(ev,i));t.addEventListener('dblclick',ev=>{ev.stopPropagation();openIslandModal(i.id)});textLayer.appendChild(t);
+    label.appendChild(t);label.appendChild(el('title',{},`${i.name} — ${i.sea}`));
+    label.addEventListener('pointerdown',ev=>labelPointerDown(ev,i));label.addEventListener('click',ev=>activateIsland(ev,i));label.addEventListener('dblclick',ev=>{if(tool==='sail')return;ev.stopPropagation();openIslandModal(i.id)});textLayer.appendChild(label);
   }
 }
 function renderMini(){
   const m=$('miniSvg');m.replaceChildren(el('rect',{x:0,y:0,width:WORLD.w,height:WORLD.h,fill:state.appearance?.sea||APPEARANCE_DEFAULTS.sea}));
   if(state.layers.base)for(const land of REFERENCE_GEOGRAPHY){if(!land.editable)m.appendChild(el('path',{d:land.d,fill:land.red?state.appearance.red:state.appearance.land}))}
   if(state.layers.islands)for(const i of state.islands.filter(isVisible)){m.appendChild(el('path',{d:smoothClosedPath(i.points,i.smooth??.5),fill:i.customColor||state.appearance.land}))}
-  if(state.layers.ship&&state.ship.visible&&isVisible(state.ship))m.appendChild(el('circle',{cx:state.ship.x,cy:state.ship.y,r:15,fill:'#fff1cb',stroke:'#69372e','stroke-width':5}));
+  if(state.layers.routes&&state.voyage.showTrail)for(const leg of state.voyage.legs){if(isVisible(leg)&&leg.points.length>1)m.appendChild(el('path',{d:trailPath(leg.points),fill:'none',stroke:'#f4ca79','stroke-width':8}))}
+  if(state.layers.ship&&state.ship.visible&&isVisible(state.ship))m.appendChild(el('circle',{class:'miniShip',cx:state.ship.x,cy:state.ship.y,r:15,fill:'#fff1cb',stroke:'#69372e','stroke-width':5}));
   m.appendChild(el('rect',{x:camera.x,y:camera.y,width:camera.w,height:camera.h,fill:'none',stroke:'#fff0bf','stroke-width':12}));
 }
-function selectObject(type,id){selected={type,id};$('islandLayer').querySelectorAll('.islandPath').forEach(n=>n.classList.toggle('selected',type==='island'&&n.dataset.id===id));$('islandLayer').querySelectorAll('.islandLabel').forEach(n=>n.classList.toggle('selectedLabel',type==='island'&&n.dataset.id===id));renderRoutes();renderShip();renderEdit();renderLists();renderInspector();if(tool==='select'){if(innerWidth<=760&&$('sidebar').classList.contains('open'))togglePanel('left');if(!$('inspector').classList.contains('open'))togglePanel('right')}}
+function selectObject(type,id){selected={type,id};renderIslands();$('islandLayer').querySelectorAll('.islandPath').forEach(n=>n.classList.toggle('selected',type==='island'&&n.dataset.id===id));$('islandLayer').querySelectorAll('.islandLabel').forEach(n=>n.classList.toggle('selectedLabel',type==='island'&&n.dataset.id===id));renderRoutes();renderShip();renderEdit();renderLists();renderInspector();if(tool==='select'){if(innerWidth<=760&&$('sidebar').classList.contains('open'))togglePanel('left');if(!$('inspector').classList.contains('open'))togglePanel('right')}}
 function nudgeLabel(i,dx,dy){pushHistory();const c=centerOfIsland(i),pos=lastLabelLayout.get(i.id)||{x:c.x+(+i.labelDx||0),y:c.y+(+i.labelDy||0)};i.labelDx=pos.x-c.x+dx;i.labelDy=pos.y-c.y+dy;i.labelMode='fixed';renderAll()}
 function resetLabel(i){pushHistory();i.labelMode='auto';i.labelDx=0;i.labelDy=labelDefaultDy(i,bboxOf(i.points));renderAll()}
 function labelPointerDown(ev,i){
@@ -982,7 +921,7 @@ svg.addEventListener('pointermove',ev=>{
   if(moving?.kind!=='island'||!state.appearance.avoidOverlap)return;const i=state.islands.find(x=>x.id===moving.id),p=worldPointFromEvent(ev),dx=p.x-moving.start.x,dy=p.y-moving.start.y,points=moving.orig.map(q=>({x:q.x+dx,y:q.y+dy}));
   if(islandCollision(i,points)){ev.stopImmediatePropagation();return}
 },true);
-svg.addEventListener('pointercancel',()=>{moving=null;reshaping=null;drawing=null;panning=null;pane.classList.remove('panning');renderAll()});
+svg.addEventListener('pointercancel',()=>{if(moving?.kind==='ship')finishShipDrag();moving=null;reshaping=null;drawing=null;panning=null;pane.classList.remove('panning');renderAll()});
 window.addEventListener('blur',()=>{spaceDown=false;panning=null;pane.classList.remove('panning')});
 // On resize, preserve the center and use the new viewport aspect ratio.
 window.addEventListener('resize',()=>{const c={x:camera.x+camera.w/2,y:camera.y+camera.h/2};camera.h=camera.w/Math.max(.2,svg.clientWidth/Math.max(1,svg.clientHeight));camera.x=c.x-camera.w/2;camera.y=c.y-camera.h/2;setCamera()});
@@ -994,6 +933,193 @@ $('showReference').onclick=()=>{
 };
 $('referenceFile').onchange=e=>{const f=e.target.files?.[0];if(!f)return;if(referenceURL)URL.revokeObjectURL(referenceURL);referenceURL=URL.createObjectURL(f);const g=$('referenceLayer');g.replaceChildren(el('image',{href:referenceURL,x:0,y:40,width:WORLD.w,height:2920,preserveAspectRatio:'none',opacity:$('referenceOpacity').value/100,class:'referenceImage'}));svg.appendChild(g);toast('Referência temporária carregada.')};
 $('resetAtlas').onclick=()=>{if(!confirm('Restaurar os contornos e posições da referência? As anotações e ilhas criadas serão preservadas.'))return;pushHistory();const saved=new Map(state.islands.map(i=>[i.id,i]));state.islands=ATLAS_ISLANDS.map(a=>{const old=saved.get(a.id);return old?{...clone(a),name:old.name,notes:old.notes,resources:old.resources,status:old.status,visibility:old.visibility,difficulty:old.difficulty}:clone(a)}).concat(state.islands.filter(i=>i.source!=='atlas'));selected=null;renderAll();toast('Geografia da referência restaurada.')};
+
+
+function enlargeUneditedIslands(islands){
+  for(const i of islands){
+    if(i.source!=='atlas'||i.featureKind==='locality'||i.presentationRevision)continue;
+    const original=ATLAS_ISLANDS.find(a=>a.id===i.id);
+    if(!original||shapeFingerprint(i.points)!==shapeFingerprint(original.points)||(i.shapeScale||100)!==100)continue;
+    const b=bboxOf(i.points),dimension=Math.max(b.w,b.h);if(dimension>650)continue;
+    const desired=dimension<90?1.32:dimension<250?1.22:1.12;
+    const clear=factor=>{const pts=transformedPoints(i,factor),bb=bboxOf(pts);return bb.minX>=4&&bb.maxX<=WORLD.w-4&&bb.minY>=40&&bb.maxY<=2960&&!islands.some(o=>o.id!==i.id&&o.featureKind!=='locality'&&polygonsOverlap(pts,o.points))};
+    let factor=desired;
+    if(!clear(factor)){let lo=1,hi=desired;for(let n=0;n<10;n++){const mid=(lo+hi)/2;if(clear(mid))lo=mid;else hi=mid}factor=lo}
+    if(factor>1.005){i.points=transformedPoints(i,factor);i.shapeScale=100*factor}
+    i.presentationRevision=1;
+  }
+}
+
+// Navigation and voyage history. Coordinates remain in the atlas' original world units.
+let queueMode=false;
+let sailFrame=0,sailPaused=true,sailLastTime=0,sailPaintTime=0,sailSaveTime=0,suppressMapClickUntil=0;
+function voyageDefaults(){return {recording:true,showTrail:true,follow:false,speed:95,legs:[],activeLegId:null,waypoints:[]}}
+function normalizeVoyage(value){
+  const v={...voyageDefaults(),...(value&&typeof value==='object'?value:{})};
+  const validPoint=p=>p&&Number.isFinite(p.x)&&Number.isFinite(p.y);
+  v.speed=clamp(Number(v.speed)||95,25,300);
+  v.legs=(Array.isArray(v.legs)?v.legs:[]).map(l=>({...l,id:String(l.id||uid('voyage')),name:String(l.name||'Viagem'),visibility:l.visibility==='master'?'master':'player',points:(Array.isArray(l.points)?l.points:[]).filter(validPoint).map(p=>({x:clamp(p.x,0,WORLD.w),y:clamp(p.y,0,WORLD.h)})),stops:Array.isArray(l.stops)?l.stops:[]}));
+  v.waypoints=(Array.isArray(v.waypoints)?v.waypoints:[]).filter(validPoint).map(p=>({...p,x:clamp(p.x,0,WORLD.w),y:clamp(p.y,0,WORLD.h)}));
+  if(!v.legs.some(l=>l.id===v.activeLegId))v.activeLegId=null;
+  return v;
+}
+function activeVoyage(){return state.voyage.legs.find(l=>l.id===state.voyage.activeLegId)}
+function beginVoyage(){
+  if(!state.voyage.recording)return null;
+  let leg=activeVoyage();if(leg)return leg;
+  leg={id:uid('voyage'),name:'Viagem '+(state.voyage.legs.length+1),visibility:state.ship.visibility,startedAt:new Date().toISOString(),points:[{x:state.ship.x,y:state.ship.y}],stops:[]};
+  state.voyage.legs.push(leg);state.voyage.activeLegId=leg.id;return leg;
+}
+function traceShipPosition(force=false){
+  if(!state.voyage.recording)return;
+  const leg=beginVoyage(),p={x:state.ship.x,y:state.ship.y},last=leg.points.at(-1),distance=Math.hypot(p.x-last.x,p.y-last.y);
+  if(distance>(force ? .01 : 4))leg.points.push(p);
+}
+function trailPath(points){return points.map((p,n)=>(n?'L':'M')+p.x.toFixed(2)+' '+p.y.toFixed(2)).join(' ')}
+function voyageDistance(leg){return leg.points.reduce((sum,p,n)=>n?sum+Math.hypot(p.x-leg.points[n-1].x,p.y-leg.points[n-1].y):0,0)}
+function renderVoyage(){
+  const g=$('voyageLayer');g.replaceChildren();g.style.display=state.layers.routes&&state.voyage.showTrail?'':'none';
+  for(const leg of state.voyage.legs){
+    if(!isVisible(leg)||leg.points.length<2)continue;
+    const d=trailPath(leg.points),group=el('g',{class:'voyageLeg'});group.append(el('path',{d,class:'voyageHalo'}),el('path',{d,class:'voyageTrail'}));
+    const first=leg.points[0];group.appendChild(el('circle',{cx:first.x,cy:first.y,r:3.1/pixelScale(),class:'voyageOrigin'}));
+    for(const stop of leg.stops){if(!Number.isFinite(stop.x)||!Number.isFinite(stop.y))continue;const mark=el('circle',{cx:stop.x,cy:stop.y,r:3.6/pixelScale(),class:'voyageStop'});mark.appendChild(el('title',{},stop.name||'Escala'));group.appendChild(mark)}
+    group.appendChild(el('title',{},leg.name));g.appendChild(group);
+  }
+  if(state.voyage.waypoints.length){
+    const pts=[state.ship,...state.voyage.waypoints];g.appendChild(el('path',{d:trailPath(pts),class:'sailingPlan'}));
+    for(const [n,p]of state.voyage.waypoints.entries()){const marker=el('g');marker.appendChild(el('circle',{cx:p.x,cy:p.y,r:7/pixelScale(),class:'sailingWaypoint'}));marker.appendChild(el('text',{x:p.x,y:p.y,style:`font-size:${9/pixelScale()}px`,class:'waypointNumber'},String(n+1)));g.appendChild(marker)}
+  }
+}
+function renderShip(){
+  const layer=$('shipLayer'),s=state.ship;
+  if(!s.visible||!isVisible(s)){layer.replaceChildren();return}
+  let group=layer.querySelector('.shipGroup');
+  if(!group){
+    group=el('g',{class:'shipGroup',role:'button',tabindex:'0','aria-label':'Selecionar navio'});
+    group.innerHTML='<g class="shipWake"><path d="M-10 14 Q-23 31 -27 43 M10 14 Q23 31 27 43"/><path d="M-5 22 Q-8 39 -14 49 M5 22 Q8 39 14 49"/></g><ellipse class="shipShadow" cx="0" cy="9" rx="13" ry="27"/><path class="shipHull" d="M0 -31 C17 -12 17 16 8 29 Q0 35 -8 29 C-17 16 -17 -12 0 -31Z"/><path class="shipDeck" d="M0 -22 C10 -7 10 13 5 21 L-5 21 C-10 13 -10 -7 0 -22Z"/><path class="shipSail" d="M-20 -9 Q0 -22 20 -9 L16 8 Q0 1 -16 8Z"/><path class="shipMast" d="M0 -18V24"/><path class="shipFlag" d="M0 -18L11 -14L0 -10Z"/>';
+    group.addEventListener('pointerdown',shipPointerDown);
+    group.addEventListener('click',ev=>{ev.stopPropagation();if(performance.now()>=suppressMapClickUntil)selectObject('ship','ship')});
+    group.addEventListener('keydown',ev=>{if(ev.key==='Enter'){ev.preventDefault();selectObject('ship','ship')}});
+    layer.append(group,el('text',{class:'shipName routeLabel'}));
+  }
+  // Keep a useful hit area and legible icon at both world and island zoom levels.
+  const scale=clamp(.58/pixelScale(),.38,3.5);
+  group.setAttribute('transform',`translate(${s.x} ${s.y}) rotate(${s.heading||0}) scale(${scale})`);
+  group.classList.toggle('selected',selected?.type==='ship');group.classList.toggle('sailing',!sailPaused||!!moving?.dragStarted);
+  const label=layer.querySelector('.shipName');label.textContent=s.name;label.setAttribute('x',s.x);label.setAttribute('y',s.y+44*scale);label.style.fontSize=12/pixelScale()+'px';label.style.display=state.layers.labels?'':'none';
+}
+function renderSailingControls(){
+  const v=state.voyage,s=state.ship,next=v.waypoints[0],leg=activeVoyage();
+  $('sailingDock').classList.toggle('isSailing',!sailPaused);
+  $('sailingDock').style.display=state.layers.ship&&s.visible&&isVisible(s)?'':'none';
+  $('sailingName').textContent=s.name;
+  $('sailingStatus').textContent=!sailPaused?'Navegando · '+(next?.name||'Mar aberto'):(v.waypoints.length?'Viagem pausada':(leg?.name||'Pronto para zarpar'));
+  $('sailPause').textContent=sailPaused?'▶':'Ⅱ';$('sailPause').title=sailPaused?'Retomar navegação':'Pausar navegação';$('sailPause').setAttribute('aria-label',$('sailPause').title);$('sailPause').disabled=!v.waypoints.length;
+  $('sailFinish').disabled=!leg&&!v.waypoints.length;
+  $('sailMode').classList.toggle('active',tool==='sail');$('sailQueue').classList.toggle('active',queueMode);$('sailQueue').setAttribute('aria-pressed',String(queueMode));
+}
+function pauseSailing(persist=true){
+  if(sailFrame)cancelAnimationFrame(sailFrame);sailFrame=0;sailPaused=true;sailLastTime=0;
+  if(activeVoyage())traceShipPosition(true);
+  renderShip();renderVoyage();renderSailingControls();if(persist)save();
+}
+function resumeSailing(){
+  if(!state.voyage.waypoints.length)return toast('Escolha um destino no mapa.');
+  if(!sailPaused)return;
+  beginVoyage();sailPaused=false;sailLastTime=0;sailPaintTime=0;renderSailingControls();sailFrame=requestAnimationFrame(sailingTick);save();
+}
+function navigateTo(point,island=null,append=false){
+  if(!state.layers.ship||!state.ship.visible||!isVisible(state.ship))return toast('Ative a camada do navio para navegar.');
+  pushHistory();if(!append){pauseSailing(false);state.voyage.waypoints=[]}
+  const from=state.voyage.waypoints.at(-1)||state.ship,p=island?dockPoint(island,from):point;
+  if(Math.hypot(p.x-from.x,p.y-from.y)<1)return;
+  state.voyage.waypoints.push({x:clamp(p.x,0,WORLD.w),y:clamp(p.y,0,WORLD.h),islandId:island?.id||null,name:island?.name||'Mar aberto'});
+  resumeSailing();renderVoyage();renderSailingControls();if(selected?.type==='ship')renderShipInspector();save();
+}
+function dockPoint(island,from){
+  const c=centerOfIsland(island);let edge=island.points[0],distance=Infinity;
+  for(const p of island.points){const d=Math.hypot(p.x-from.x,p.y-from.y);if(d<distance){distance=d;edge=p}}
+  const dx=edge.x-c.x,dy=edge.y-c.y,length=Math.hypot(dx,dy)||1;
+  return {x:edge.x+dx/length*9,y:edge.y+dy/length*9};
+}
+function sailingTick(time){
+  sailFrame=0;if(sailPaused||!state.voyage.waypoints.length)return;
+  // Cap elapsed time after tab suspension; a hidden tab must never teleport the ship.
+  const dt=sailLastTime?Math.min(.06,Math.max(0,(time-sailLastTime)/1000)):0;sailLastTime=time;
+  const target=state.voyage.waypoints[0],s=state.ship,dx=target.x-s.x,dy=target.y-s.y,distance=Math.hypot(dx,dy),step=Math.min(distance,state.voyage.speed*dt);
+  if(distance>.001){
+    const angle=Math.atan2(dy,dx)*180/Math.PI+90,diff=((angle-(s.heading||0)+540)%360)-180;
+    s.heading=((s.heading||0)+diff*Math.min(1,dt*6)+540)%360-180;
+    s.x+=dx/distance*step;s.y+=dy/distance*step;traceShipPosition();
+  }
+  if(distance-step<.01){
+    s.x=target.x;s.y=target.y;traceShipPosition(true);state.voyage.waypoints.shift();
+    if(target.islandId){
+      const i=state.islands.find(x=>x.id===target.islandId),leg=activeVoyage();
+      if(i){if(leg&&state.voyage.recording)leg.stops.push({islandId:i.id,name:i.name,x:s.x,y:s.y});if(['known','unknown','target'].includes(i.status))i.status='visited';renderStats();renderLists()}
+    }
+    renderSailingControls();save();
+    if(!state.voyage.waypoints.length){pauseSailing();renderFog();renderMini();if(selected?.type==='ship')renderShipInspector();toast('Destino alcançado.');return}
+  }
+  renderShip();
+  if(time-sailPaintTime>90){
+    sailPaintTime=time;renderVoyage();
+    if(state.voyage.follow){camera.x=s.x-camera.w/2;camera.y=s.y-camera.h/2;setCamera()}else{const dot=$('miniSvg').querySelector('.miniShip');if(dot){dot.setAttribute('cx',s.x);dot.setAttribute('cy',s.y)}}
+    if(state.layers.fog)renderFog();
+  }
+  if(time-sailSaveTime>1000){sailSaveTime=time;save()}
+  sailFrame=requestAnimationFrame(sailingTick);
+}
+function shipPointerDown(ev){
+  if(ev.button!==0)return;
+  if(tool==='pan'||spaceDown){startPan(ev);return}
+  if(!['select','move','sail'].includes(tool))return;
+  ev.preventDefault();ev.stopPropagation();pauseSailing(false);
+  moving={kind:'ship',start:worldPointFromEvent(ev),orig:{x:state.ship.x,y:state.ship.y},dragStarted:false};svg.setPointerCapture(ev.pointerId);
+}
+function moveShipDrag(p){
+  const m=moving,dx=p.x-m.start.x,dy=p.y-m.start.y;
+  if(!m.dragStarted){if(Math.hypot(dx,dy)*pixelScale()<3)return;pushHistory();state.voyage.waypoints=[];beginVoyage();m.dragStarted=true}
+  const x=clamp(m.orig.x+dx,0,WORLD.w),y=clamp(m.orig.y+dy,0,WORLD.h),sx=x-state.ship.x,sy=y-state.ship.y;
+  if(Math.hypot(sx,sy)>.01)state.ship.heading=Math.atan2(sy,sx)*180/Math.PI+90;
+  state.ship.x=x;state.ship.y=y;traceShipPosition();renderShip();renderVoyage();renderFog();renderMini();
+}
+function finishShipDrag(){
+  if(moving?.kind!=='ship')return;
+  if(moving.dragStarted){traceShipPosition(true);suppressMapClickUntil=performance.now()+250}
+  moving=null;save();renderAll();
+}
+function finishVoyage(){
+  pushHistory();pauseSailing(false);const leg=activeVoyage();if(leg)leg.finishedAt=new Date().toISOString();state.voyage.activeLegId=null;state.voyage.waypoints=[];renderAll();toast('Viagem guardada no diário. A próxima navegação inicia outro trajeto.');
+}
+function renderShipInspector(){
+  const c=$('inspectorContent'),s=state.ship,v=state.voyage,leg=activeVoyage(),legs=v.legs.filter(isVisible);
+  c.innerHTML=`<div class="subline">Diário de bordo</div><div class="heroName islandInspectorName">${esc(s.name)}</div><div class="badgeRow"><span class="badge known">${sailPaused?'Ancorado':'Navegando'}</span><span class="badge">${legs.length} viagens</span></div><div class="formMini"><label for="shipName">Nome do navio</label><input id="shipName" maxlength="80" value="${esc(s.name)}"><label for="shipVis">Visibilidade do navio</label><select id="shipVis"><option value="player" ${s.visibility==='player'?'selected':''}>Jogadores</option><option value="master" ${s.visibility==='master'?'selected':''}>Somente Mestre</option></select><label for="sailSpeed">Velocidade da animação</label><select id="sailSpeed"><option value="45">Contemplativa</option><option value="95">Normal</option><option value="220">Rápida</option></select></div><div class="actionGrid"><button id="shipMove">⚓ Escolher destino</button><button id="shipCenter">Localizar navio</button><button id="shipPause">${sailPaused?'Retomar':'Pausar'}</button><button id="shipFinish">Encerrar viagem</button></div><div class="voyageOptions"><label><input id="sailRecord" type="checkbox" ${v.recording?'checked':''}> Registrar caminho percorrido</label><label><input id="sailShowTrail" type="checkbox" ${v.showTrail?'checked':''}> Mostrar trajetos no mapa</label><label><input id="sailFollow" type="checkbox" ${v.follow?'checked':''}> Câmera acompanha o barco</label></div><p class="personalHint">Em <b>Navegar</b>, clique para escolher o destino. O botão <b>＋</b> ou <b>Shift + clique</b> adiciona paradas e curvas. Também é possível arrastar o barco. <b>Esc</b> pausa.</p>${leg?`<div class="formMini"><label for="voyageName">Viagem atual</label><input id="voyageName" maxlength="80" value="${esc(leg.name)}"></div>`:''}<div class="voyageJournal"><h3>Travessias registradas</h3>${legs.length?legs.slice().reverse().map(l=>`<article class="voyageEntry"><div><b>${esc(l.name)}</b><small>${l.stops.length?l.stops.map(p=>esc(p.name)).join(' → '):'Mar aberto'}</small></div><button data-voyage-focus="${esc(l.id)}" title="Ver trajeto">⌖</button><button data-voyage-delete="${esc(l.id)}" title="Excluir trajeto">×</button></article>`).join(''):'<p class="personalHint">O primeiro movimento inicia o diário. Os trajetos ficam salvos com o mapa e no backup JSON.</p>'}</div>`;
+  $('sailSpeed').value=String(v.speed);$('shipPause').disabled=!v.waypoints.length;
+  $('shipName').onchange=e=>{pushHistory();s.name=e.target.value.trim()||'Navio da Tripulação';renderAll()};
+  $('shipVis').onchange=e=>{pushHistory();s.visibility=e.target.value;renderAll()};
+  $('sailSpeed').onchange=e=>{pushHistory();v.speed=+e.target.value;save()};
+  $('shipMove').onclick=()=>{setTool('sail');if(innerWidth<=760&&$('inspector').classList.contains('open'))togglePanel('right')};
+  $('shipCenter').onclick=()=>centerOn(s.x,s.y,Math.max(2.5,WORLD.w/camera.w));$('shipPause').onclick=()=>{sailPaused?resumeSailing():pauseSailing();renderShipInspector()};$('shipFinish').onclick=finishVoyage;
+  $('sailRecord').onchange=e=>{pushHistory();traceShipPosition(true);v.recording=e.target.checked;v.activeLegId=null;renderAll()};
+  $('sailShowTrail').onchange=e=>{pushHistory();v.showTrail=e.target.checked;renderAll()};$('sailFollow').onchange=e=>{pushHistory();v.follow=e.target.checked;save()};
+  if($('voyageName'))$('voyageName').onchange=e=>{pushHistory();leg.name=e.target.value.trim()||'Viagem';renderAll()};
+  c.querySelectorAll('[data-voyage-focus]').forEach(button=>button.onclick=()=>{const l=v.legs.find(l=>l.id===button.dataset.voyageFocus),b=bboxOf(l.points);centerOn(b.cx,b.cy,clamp(WORLD.w/Math.max(250,b.w*1.5,b.h*svg.clientWidth/Math.max(1,svg.clientHeight)*1.5),1,12))});
+  c.querySelectorAll('[data-voyage-delete]').forEach(button=>button.onclick=()=>{pushHistory();const id=button.dataset.voyageDelete;v.legs=v.legs.filter(l=>l.id!==id);if(v.activeLegId===id)v.activeLegId=null;renderAll();toast('Trajeto removido. Ctrl+Z desfaz.')});
+}
+$('sailMode').onclick=()=>{setTool(tool==='sail'?'select':'sail');renderSailingControls()};$('sailPause').onclick=()=>{sailPaused?resumeSailing():pauseSailing();if(selected?.type==='ship')renderShipInspector()};$('sailFinish').onclick=finishVoyage;
+$('sailingDetails').onclick=()=>selectObject('ship','ship');
+$('sailQueue').onclick=()=>{queueMode=!queueMode;renderSailingControls();toast(queueMode?'Próximos cliques acrescentam paradas.':'Próximo clique escolhe um novo destino.')};
+svg.addEventListener('click',ev=>{
+  if(performance.now()<suppressMapClickUntil){ev.stopImmediatePropagation();return}
+  if(tool!=='sail'||spaceDown||ev.target.closest('.shipGroup,.handle'))return;
+  ev.preventDefault();ev.stopImmediatePropagation();const node=ev.target.closest('[data-id]'),island=node&&state.islands.find(i=>i.id===node.dataset.id);
+  navigateTo(worldPointFromEvent(ev),island||null,ev.shiftKey||queueMode);
+},true);
+svg.addEventListener('pointerup',()=>{if(moving?.kind==='ship')finishShipDrag()},true);
+window.addEventListener('keydown',ev=>{if(['INPUT','TEXTAREA','SELECT'].includes(document.activeElement.tagName))return;if(ev.key==='Escape')pauseSailing();if(ev.key.toLowerCase()==='n'){setTool('sail');renderSailingControls()}},true);
+document.addEventListener('visibilitychange',()=>{if(document.hidden&&!sailPaused)pauseSailing()});window.addEventListener('pagehide',()=>{if(activeVoyage())traceShipPosition(true);save()});
 
 load();
 })();
