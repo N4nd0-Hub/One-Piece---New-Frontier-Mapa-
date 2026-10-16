@@ -38,7 +38,7 @@ button{cursor:pointer}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:5px}.stat{padding:6px;border:1px solid #5e4936;background:#fff4d8;text-align:center;font:800 8px Arial,sans-serif;text-transform:uppercase}.stat b{display:block;font-size:15px;color:#963b32;margin-top:2px}
 .help{font:10px/1.45 Arial,sans-serif;color:#5e4a36}.help kbd{border:1px solid #5a4635;background:#fff6dd;padding:1px 4px;box-shadow:1px 1px 0 #5a4635;font-size:9px}
 .mapPane{position:relative;min-width:0;min-height:0;background:#335b6d;overflow:hidden}
-#worldSvg{width:100%;height:100%;display:block;touch-action:none;user-select:none;background:#4d788a}.mapPane[data-tool="draw"] #worldSvg{cursor:crosshair}.mapPane[data-tool="pan"] #worldSvg{cursor:grab}.mapPane.panning #worldSvg{cursor:grabbing}.mapPane[data-tool="move"] #worldSvg{cursor:move}
+#worldSvg{width:100%;height:100%;display:block;touch-action:none;user-select:none;background:#4d788a}.mapPane[data-tool="draw"] #worldSvg{cursor:crosshair}.mapPane[data-tool="pan"] #worldSvg{cursor:grab}.mapPane.panning #worldSvg{cursor:grabbing}.mapPane[data-tool="move"] #worldSvg{cursor:move}.mapPane[data-tool="placeShip"] #worldSvg{cursor:crosshair}
 .floatingInfo{position:absolute;left:11px;top:11px;z-index:9;background:#f4e4c7ed;border:2px solid var(--ink);box-shadow:3px 3px 0 #0007;padding:7px 9px;font:800 10px Arial,sans-serif;pointer-events:none}.floatingInfo strong{color:#a43d33}
 .mapControls{position:absolute;right:11px;bottom:11px;z-index:9;display:grid;grid-template-columns:38px 38px;gap:5px}.mapControls button{height:38px;border:2px solid var(--ink);background:#f3e3c3;box-shadow:2px 2px 0 var(--ink);font-weight:900}.mapControls .wide{grid-column:1/3}
 .minimapWrap{position:absolute;right:11px;top:11px;z-index:9;width:190px;height:120px;border:2px solid var(--ink);background:#e5d2ae;box-shadow:3px 3px 0 #0007;overflow:hidden}.minimapWrap svg{width:100%;height:100%;display:block;cursor:pointer}
@@ -368,6 +368,7 @@ html,body{font-family:'Inter',Arial,sans-serif}
       <button class="toolBtn" data-tool="reshape">◈ Editar forma</button>
       <button class="toolBtn" data-tool="route">〰 Rota</button>
       <button class="toolBtn" data-tool="sail">⚓ Navegar</button>
+      <button class="toolBtn" data-tool="placeShip">⌖ Reposicionar sem rota</button>
       <span class="divider"></span>
       <button class="toolBtn secondary" id="gridBtn"># Grade</button>
       <button class="toolBtn secondary active" id="labelsBtn">Aa Nomes</button>
@@ -565,7 +566,7 @@ html,body{font-family:'Inter',Arial,sans-serif}
 const NS='http://www.w3.org/2000/svg', WORLD={w:5600,h:3000}, REF={x:0,y:40,sx:2.734375,sy:2.1677802524}, KEY='op_new_frontier_vector_atlas_v4';
 const statusMeta={visited:{label:'Visitada',color:'#5d8962'},known:{label:'Conhecida',color:'#56769a'},target:{label:'Destino',color:'#d8a449'},danger:{label:'Perigo',color:'#9d3d35'},unknown:{label:'Desconhecida',color:'#7e7164'}};
 const terrainMeta={generic:'Genérico',tropical:'Tropical',forest:'Floresta',desert:'Deserto',snow:'Neve',volcanic:'Vulcânico',rocky:'Rochoso',kingdom:'Reino',swamp:'Pântano',sky:'Céu'};
-const toolNames={select:'Selecionar',pan:'Mover mapa',draw:'Desenhar ilha',move:'Mover objeto',reshape:'Editar forma',route:'Traçar rota',sail:'Navegar com o navio'};
+const toolNames={select:'Selecionar',pan:'Mover mapa',draw:'Desenhar ilha',move:'Mover objeto',reshape:'Editar forma',route:'Traçar rota',sail:'Navegar com o navio',placeShip:'Reposicionar sem rota'};
 const BASE_TRACE_PATHS=[];
 const BASE_GRAND_ISLETS=[];
 const BASE_LABELS=[{"name":"North Blue","x":1129.296875,"y":484.39495174461763,"kind":"sea"},{"name":"East Blue","x":3882.8125,"y":1191.0913140311802,"kind":"sea"},{"name":"West Blue","x":905.078125,"y":2619.6585003711953,"kind":"sea"},{"name":"South Blue","x":4448.828125,"y":2216.45137342242,"kind":"sea"},{"name":"Red Line","x":2354.296875,"y":668.656273199703,"kind":"red"},{"name":"Red Line","x":5364.84375,"y":1136.896807720861,"kind":"red"},{"name":"Red Line","x":177.734375,"y":2207.7802524127687,"kind":"red"},{"name":"Calm Belt","x":1564.0625,"y":1531.432813659985,"kind":"belt"},{"name":"New World","x":1285.15625,"y":1906.458797327394,"kind":"belt"},{"name":"Paradise","x":3308.59375,"y":1531.432813659985,"kind":"belt"},{"name":"Calm Belt","x":3032.421875,"y":1908.6265775798067,"kind":"belt"}];
@@ -631,9 +632,10 @@ function renderInspector(){const c=$('inspectorContent');if(!selected){c.innerHT
 function routeIslandClick(id){if(!routeDraft){routeDraft={a:id,points:[]};routeCursor=null;selectObject('island',id);toast('Origem escolhida. Clique no mar para curvar a rota ou em outra ilha para finalizar.');return}if(routeDraft.a===id){routeDraft=null;routeCursor=null;renderDraft();toast('Rota cancelada.');return}const draft={id:uid('route'),a:routeDraft.a,b:id,points:clone(routeDraft.points),type:'planned',visibility:'player',label:'',travel:'',notes:''};routeDraft=null;routeCursor=null;renderDraft();openRouteModal(null,draft)}
 function routeTypeLabel(t){return({traveled:'Percorrida',planned:'Planejada',permanent:'Permanente',dangerous:'Perigosa',current:'Corrente / Ativa'})[t]||t}
 function setTool(t){
+  if(t==='placeShip')pauseSailing();
   tool=t;pane.dataset.tool=t;document.querySelectorAll('button[data-tool]').forEach(b=>b.classList.toggle('active',b.dataset.tool===t));
   $('floatingInfo').innerHTML=`Ferramenta: <strong>${toolNames[t]}</strong>`;routeDraft=null;routeCursor=null;drawing=null;renderDraft();renderEdit();
-  const hints={draw:'Clique e arraste para desenhar o contorno da ilha.',reshape:'Arraste os pontos. Duplo clique na costa adiciona um ponto; botão direito remove.',route:'Clique numa ilha de origem. Clique no mar para criar curvas e em outra ilha para finalizar.',move:'Arraste uma ilha, um nome ou o navio.',sail:'Clique para navegar · ＋ ou Shift + clique adiciona paradas · Arraste o barco para traçar à mão · Esc pausa'};
+  const hints={draw:'Clique e arraste para desenhar o contorno da ilha.',reshape:'Arraste os pontos. Duplo clique na costa adiciona um ponto; botão direito remove.',route:'Clique numa ilha de origem. Clique no mar para criar curvas e em outra ilha para finalizar.',move:'Arraste uma ilha, um nome ou o navio.',placeShip:'Clique no mapa ou arraste o barco para ajustar a posição sem registrar trajeto.',sail:'Clique para navegar · ＋ ou Shift + clique adiciona paradas · Arraste o barco para traçar à mão · Esc pausa'};
   $('drawHint').textContent=hints[t]||'';$('drawHint').classList.toggle('show',!!hints[t]);renderSailingControls();
 }
 function handleIslandDown(ev,i,idx){if(ev.button!==0)return;ev.stopPropagation();pushHistory();reshaping={kind:'island',id:i.id,idx};svg.setPointerCapture(ev.pointerId)}
@@ -1006,7 +1008,7 @@ function renderShip(){
   // Keep a useful hit area and legible icon at both world and island zoom levels.
   const scale=clamp(.58/pixelScale(),.38,3.5);
   group.setAttribute('transform',`translate(${s.x} ${s.y}) rotate(${s.heading||0}) scale(${scale})`);
-  group.classList.toggle('selected',selected?.type==='ship');group.classList.toggle('sailing',!sailPaused||!!moving?.dragStarted);
+  group.classList.toggle('selected',selected?.type==='ship');group.classList.toggle('sailing',!sailPaused||!!(moving?.dragStarted&&moving.recordTrail));
   const label=layer.querySelector('.shipName');label.textContent=s.name;label.setAttribute('x',s.x);label.setAttribute('y',s.y+44*scale);label.style.fontSize=12/pixelScale()+'px';label.style.display=state.layers.labels?'':'none';
 }
 function renderSailingControls(){
@@ -1014,8 +1016,8 @@ function renderSailingControls(){
   $('sailingDock').classList.toggle('isSailing',!sailPaused);
   $('sailingDock').style.display=state.layers.ship&&s.visible&&isVisible(s)?'':'none';
   $('sailingName').textContent=s.name;
-  $('sailingStatus').textContent=!sailPaused?'Navegando · '+(next?.name||'Mar aberto'):(v.waypoints.length?'Viagem pausada':(leg?.name||'Pronto para zarpar'));
-  $('sailPause').textContent=sailPaused?'▶':'Ⅱ';$('sailPause').title=sailPaused?'Retomar navegação':'Pausar navegação';$('sailPause').setAttribute('aria-label',$('sailPause').title);$('sailPause').disabled=!v.waypoints.length;
+  $('sailingStatus').textContent=tool==='placeShip'?'Reposicionar sem rota · clique no mapa':!sailPaused?'Navegando · '+(next?.name||'Mar aberto'):(v.waypoints.length?'Viagem pausada':(leg?.name||'Pronto para zarpar'));
+  $('sailPause').textContent=sailPaused?'▶':'Ⅱ';$('sailPause').title=sailPaused?'Retomar navegação':'Pausar navegação';$('sailPause').setAttribute('aria-label',$('sailPause').title);$('sailPause').disabled=!v.waypoints.length||tool==='placeShip';
   $('sailFinish').disabled=!leg&&!v.waypoints.length;
   $('sailMode').classList.toggle('active',tool==='sail');$('sailQueue').classList.toggle('active',queueMode);$('sailQueue').setAttribute('aria-pressed',String(queueMode));
 }
@@ -1036,6 +1038,14 @@ function navigateTo(point,island=null,append=false){
   if(Math.hypot(p.x-from.x,p.y-from.y)<1)return;
   state.voyage.waypoints.push({x:clamp(p.x,0,WORLD.w),y:clamp(p.y,0,WORLD.h),islandId:island?.id||null,name:island?.name||'Mar aberto'});
   resumeSailing();renderVoyage();renderSailingControls();if(selected?.type==='ship')renderShipInspector();save();
+}
+function repositionShip(point){
+  if(!state.layers.ship||!state.ship.visible||!isVisible(state.ship))return toast('Ative a camada do navio para reposicionar.');
+  pushHistory();pauseSailing(false);
+  // End the recorded segment before moving, so later sailing cannot bridge the adjustment.
+  state.voyage.waypoints=[];state.voyage.activeLegId=null;
+  state.ship.x=clamp(point.x,0,WORLD.w);state.ship.y=clamp(point.y,0,WORLD.h);
+  renderAll();toast('Navio reposicionado sem registrar trajeto.');
 }
 function dockPoint(island,from){
   const c=centerOfIsland(island);let edge=island.points[0],distance=Infinity;
@@ -1074,20 +1084,20 @@ function sailingTick(time){
 function shipPointerDown(ev){
   if(ev.button!==0)return;
   if(tool==='pan'||spaceDown){startPan(ev);return}
-  if(!['select','move','sail'].includes(tool))return;
+  if(!['select','move','sail','placeShip'].includes(tool))return;
   ev.preventDefault();ev.stopPropagation();pauseSailing(false);
-  moving={kind:'ship',start:worldPointFromEvent(ev),orig:{x:state.ship.x,y:state.ship.y},dragStarted:false};svg.setPointerCapture(ev.pointerId);
+  moving={kind:'ship',start:worldPointFromEvent(ev),orig:{x:state.ship.x,y:state.ship.y},recordTrail:tool!=='placeShip',dragStarted:false};svg.setPointerCapture(ev.pointerId);
 }
 function moveShipDrag(p){
   const m=moving,dx=p.x-m.start.x,dy=p.y-m.start.y;
-  if(!m.dragStarted){if(Math.hypot(dx,dy)*pixelScale()<3)return;pushHistory();state.voyage.waypoints=[];beginVoyage();m.dragStarted=true}
+  if(!m.dragStarted){if(Math.hypot(dx,dy)*pixelScale()<3)return;pushHistory();state.voyage.waypoints=[];if(m.recordTrail)beginVoyage();else state.voyage.activeLegId=null;m.dragStarted=true}
   const x=clamp(m.orig.x+dx,0,WORLD.w),y=clamp(m.orig.y+dy,0,WORLD.h),sx=x-state.ship.x,sy=y-state.ship.y;
-  if(Math.hypot(sx,sy)>.01)state.ship.heading=Math.atan2(sy,sx)*180/Math.PI+90;
-  state.ship.x=x;state.ship.y=y;traceShipPosition();renderShip();renderVoyage();renderFog();renderMini();
+  if(m.recordTrail&&Math.hypot(sx,sy)>.01)state.ship.heading=Math.atan2(sy,sx)*180/Math.PI+90;
+  state.ship.x=x;state.ship.y=y;if(m.recordTrail)traceShipPosition();renderShip();renderVoyage();renderFog();renderMini();
 }
 function finishShipDrag(){
   if(moving?.kind!=='ship')return;
-  if(moving.dragStarted){traceShipPosition(true);suppressMapClickUntil=performance.now()+250}
+  if(moving.dragStarted){if(moving.recordTrail)traceShipPosition(true);suppressMapClickUntil=performance.now()+250}
   moving=null;save();renderAll();
 }
 function finishVoyage(){
@@ -1095,11 +1105,12 @@ function finishVoyage(){
 }
 function renderShipInspector(){
   const c=$('inspectorContent'),s=state.ship,v=state.voyage,leg=activeVoyage(),legs=v.legs.filter(isVisible);
-  c.innerHTML=`<div class="subline">Diário de bordo</div><div class="heroName islandInspectorName">${esc(s.name)}</div><div class="badgeRow"><span class="badge known">${sailPaused?'Ancorado':'Navegando'}</span><span class="badge">${legs.length} viagens</span></div><div class="formMini"><label for="shipName">Nome do navio</label><input id="shipName" maxlength="80" value="${esc(s.name)}"><label for="shipVis">Visibilidade do navio</label><select id="shipVis"><option value="player" ${s.visibility==='player'?'selected':''}>Jogadores</option><option value="master" ${s.visibility==='master'?'selected':''}>Somente Mestre</option></select><label for="sailSpeed">Velocidade da animação</label><select id="sailSpeed"><option value="45">Contemplativa</option><option value="95">Normal</option><option value="220">Rápida</option></select></div><div class="actionGrid"><button id="shipMove">⚓ Escolher destino</button><button id="shipCenter">Localizar navio</button><button id="shipPause">${sailPaused?'Retomar':'Pausar'}</button><button id="shipFinish">Encerrar viagem</button></div><div class="voyageOptions"><label><input id="sailRecord" type="checkbox" ${v.recording?'checked':''}> Registrar caminho percorrido</label><label><input id="sailShowTrail" type="checkbox" ${v.showTrail?'checked':''}> Mostrar trajetos no mapa</label><label><input id="sailFollow" type="checkbox" ${v.follow?'checked':''}> Câmera acompanha o barco</label></div><p class="personalHint">Em <b>Navegar</b>, clique para escolher o destino. O botão <b>＋</b> ou <b>Shift + clique</b> adiciona paradas e curvas. Também é possível arrastar o barco. <b>Esc</b> pausa.</p>${leg?`<div class="formMini"><label for="voyageName">Viagem atual</label><input id="voyageName" maxlength="80" value="${esc(leg.name)}"></div>`:''}<div class="voyageJournal"><h3>Travessias registradas</h3>${legs.length?legs.slice().reverse().map(l=>`<article class="voyageEntry"><div><b>${esc(l.name)}</b><small>${l.stops.length?l.stops.map(p=>esc(p.name)).join(' → '):'Mar aberto'}</small></div><button data-voyage-focus="${esc(l.id)}" title="Ver trajeto">⌖</button><button data-voyage-delete="${esc(l.id)}" title="Excluir trajeto">×</button></article>`).join(''):'<p class="personalHint">O primeiro movimento inicia o diário. Os trajetos ficam salvos com o mapa e no backup JSON.</p>'}</div>`;
+  c.innerHTML=`<div class="subline">Diário de bordo</div><div class="heroName islandInspectorName">${esc(s.name)}</div><div class="badgeRow"><span class="badge known">${sailPaused?'Ancorado':'Navegando'}</span><span class="badge">${legs.length} viagens</span></div><div class="formMini"><label for="shipName">Nome do navio</label><input id="shipName" maxlength="80" value="${esc(s.name)}"><label for="shipVis">Visibilidade do navio</label><select id="shipVis"><option value="player" ${s.visibility==='player'?'selected':''}>Jogadores</option><option value="master" ${s.visibility==='master'?'selected':''}>Somente Mestre</option></select><label for="sailSpeed">Velocidade da animação</label><select id="sailSpeed"><option value="45">Contemplativa</option><option value="95">Normal</option><option value="220">Rápida</option></select></div><div class="actionGrid"><button id="shipMove">⚓ Escolher destino</button><button id="shipCenter">Localizar navio</button><button id="shipPause">${sailPaused?'Retomar':'Pausar'}</button><button id="shipFinish">Encerrar viagem</button></div><button class="fullBtn" id="shipPosition">⌖ Reposicionar sem registrar rota</button><div class="voyageOptions"><label><input id="sailRecord" type="checkbox" ${v.recording?'checked':''}> Registrar caminho percorrido</label><label><input id="sailShowTrail" type="checkbox" ${v.showTrail?'checked':''}> Mostrar trajetos no mapa</label><label><input id="sailFollow" type="checkbox" ${v.follow?'checked':''}> Câmera acompanha o barco</label></div><p class="personalHint">Em <b>Navegar</b>, clique para escolher o destino. O botão <b>＋</b> ou <b>Shift + clique</b> adiciona paradas e curvas. Para ajustar a posição, use <b>Reposicionar sem registrar rota</b> e clique no mapa ou arraste o barco. <b>Esc</b> sai do modo atual.</p>${leg?`<div class="formMini"><label for="voyageName">Viagem atual</label><input id="voyageName" maxlength="80" value="${esc(leg.name)}"></div>`:''}<div class="voyageJournal"><h3>Travessias registradas</h3>${legs.length?legs.slice().reverse().map(l=>`<article class="voyageEntry"><div><b>${esc(l.name)}</b><small>${l.stops.length?l.stops.map(p=>esc(p.name)).join(' → '):'Mar aberto'}</small></div><button data-voyage-focus="${esc(l.id)}" title="Ver trajeto">⌖</button><button data-voyage-delete="${esc(l.id)}" title="Excluir trajeto">×</button></article>`).join(''):'<p class="personalHint">O primeiro movimento inicia o diário. Os trajetos ficam salvos com o mapa e no backup JSON.</p>'}</div>`;
   $('sailSpeed').value=String(v.speed);$('shipPause').disabled=!v.waypoints.length;
   $('shipName').onchange=e=>{pushHistory();s.name=e.target.value.trim()||'Navio da Tripulação';renderAll()};
   $('shipVis').onchange=e=>{pushHistory();s.visibility=e.target.value;renderAll()};
   $('sailSpeed').onchange=e=>{pushHistory();v.speed=+e.target.value;save()};
+  $('shipPosition').onclick=()=>{setTool('placeShip');if(innerWidth<=760&&$('inspector').classList.contains('open'))togglePanel('right')};
   $('shipMove').onclick=()=>{setTool('sail');if(innerWidth<=760&&$('inspector').classList.contains('open'))togglePanel('right')};
   $('shipCenter').onclick=()=>centerOn(s.x,s.y,Math.max(2.5,WORLD.w/camera.w));$('shipPause').onclick=()=>{sailPaused?resumeSailing():pauseSailing();renderShipInspector()};$('shipFinish').onclick=finishVoyage;
   $('sailRecord').onchange=e=>{pushHistory();traceShipPosition(true);v.recording=e.target.checked;v.activeLegId=null;renderAll()};
@@ -1113,7 +1124,8 @@ $('sailingDetails').onclick=()=>selectObject('ship','ship');
 $('sailQueue').onclick=()=>{queueMode=!queueMode;renderSailingControls();toast(queueMode?'Próximos cliques acrescentam paradas.':'Próximo clique escolhe um novo destino.')};
 svg.addEventListener('click',ev=>{
   if(performance.now()<suppressMapClickUntil){ev.stopImmediatePropagation();return}
-  if(tool!=='sail'||spaceDown||ev.target.closest('.shipGroup,.handle'))return;
+  if(!['sail','placeShip'].includes(tool)||spaceDown||ev.target.closest('.shipGroup,.handle'))return;
+  if(tool==='placeShip'){ev.preventDefault();ev.stopImmediatePropagation();repositionShip(worldPointFromEvent(ev));return}
   ev.preventDefault();ev.stopImmediatePropagation();const node=ev.target.closest('[data-id]'),island=node&&state.islands.find(i=>i.id===node.dataset.id);
   navigateTo(worldPointFromEvent(ev),island||null,ev.shiftKey||queueMode);
 },true);
